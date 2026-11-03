@@ -26,10 +26,10 @@ Komentar: `commentThreads.list` untuk komentar tingkat atas, lalu `comments.list
 | Opsi | Default | Keterangan |
 |---|---|---|
 | `-k`, `--keyword` | 5 kata kunci proposal | boleh diulang |
-| `--max-videos` | 15 | video lolos seleksi per kata kunci |
-| `--days` | 120 | rentang publikasi (atau `--published-after/--published-before`) |
+| `--max-videos` | 20 | video lolos seleksi per kata kunci |
+| `--days` | 300 | rentang publikasi (atau `--published-after/--published-before`) |
 | `--min-comments` | 50 | komentar minimum per video |
-| `--max-threads` | 300 | maks thread tingkat atas per video (semua reply tetap diambil) |
+| `--max-threads` | 100 | maks thread tingkat atas per video (semua reply tetap diambil) |
 | `--order` | `relevance` | `relevance` atau `time` |
 | `--skip-search` | - | lanjutkan ambil komentar dari `data/raw/videos.csv` tanpa mencari ulang |
 
