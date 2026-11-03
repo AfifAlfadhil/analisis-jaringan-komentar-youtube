@@ -1,0 +1,17 @@
+﻿metric,value
+baris_mentah,7220
+duplikat_comment_id_dibuang,0
+komentar_tingkat_atas,4662
+reply,2558
+akun_tanpa_nama_dibuang,0
+duplikat_akun_video_teks_dibuang,68
+komentar_akhir,7152
+akun_unik_penulis,5644
+flag_is_empty,1
+flag_is_short,785
+flag_is_spam,0
+flag_is_copypaste,0
+flag_has_url,0
+keep_sentiment,7151
+keep_topic,5981
+komentar_dengan_mention_dikenal,650

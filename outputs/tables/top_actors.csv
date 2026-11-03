@@ -1,0 +1,91 @@
+metric,rank,author_id,value,is_channel_owner,role
+in_degree,1,user_2438,122.0,True,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,2,user_0265,84.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,3,user_0276,61.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,4,user_1002,25.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,5,user_1011,24.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,6,user_4295,23.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,7,user_2782,22.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,8,user_4308,18.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,9,user_4003,18.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,10,user_4709,18.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+out_degree,1,user_2442,59.0,True,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,2,user_2254,21.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,3,user_2224,20.0,True,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,4,user_4265,16.0,True,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,5,user_0345,15.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,6,user_3166,14.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,7,user_5257,13.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,8,user_2546,12.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,9,user_3015,11.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,10,user_3156,10.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+degree,1,user_2438,122.0,True,Paling banyak terhubung (total interaksi unik)
+degree,2,user_0265,84.0,False,Paling banyak terhubung (total interaksi unik)
+degree,3,user_0276,61.0,False,Paling banyak terhubung (total interaksi unik)
+degree,4,user_2442,59.0,True,Paling banyak terhubung (total interaksi unik)
+degree,5,user_1002,25.0,False,Paling banyak terhubung (total interaksi unik)
+degree,6,user_1011,24.0,False,Paling banyak terhubung (total interaksi unik)
+degree,7,user_4295,23.0,False,Paling banyak terhubung (total interaksi unik)
+degree,8,user_2782,22.0,False,Paling banyak terhubung (total interaksi unik)
+degree,9,user_2254,22.0,False,Paling banyak terhubung (total interaksi unik)
+degree,10,user_2224,21.0,True,Paling banyak terhubung (total interaksi unik)
+in_strength,1,user_2438,179.0,True,Total balasan/mention yang diterima (bobot)
+in_strength,2,user_0265,122.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,3,user_0276,75.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,4,user_4709,30.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,5,user_1002,29.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,6,user_1011,27.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,7,user_4308,27.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,8,user_4295,25.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,9,user_2782,25.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,10,user_4003,23.0,False,Total balasan/mention yang diterima (bobot)
+out_strength,1,user_2442,63.0,True,Total balasan/mention yang dikirim (bobot)
+out_strength,2,user_2254,25.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,3,user_3156,25.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,4,user_2224,22.0,True,Total balasan/mention yang dikirim (bobot)
+out_strength,5,user_2546,20.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,6,user_3166,19.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,7,user_5257,19.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,8,user_0360,18.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,9,user_0345,17.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,10,user_4265,16.0,True,Total balasan/mention yang dikirim (bobot)
+betweenness,1,user_2438,0.12120930041551463,True,Penghubung/jembatan antar-kelompok diskusi
+betweenness,2,user_4709,0.099751755501458,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,3,user_4813,0.09006331032823314,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,4,user_2640,0.08609666110919463,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,5,user_0347,0.059047951065740234,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,6,user_0265,0.04953768934579018,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,7,user_5032,0.0487112389964146,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,8,user_4732,0.03689304599042581,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,9,user_0276,0.034153683860773096,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,10,user_2442,0.03255787819022632,True,Penghubung/jembatan antar-kelompok diskusi
+closeness,1,user_4813,0.18493819128171762,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,2,user_4709,0.18475788105297367,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,3,user_2640,0.17679987560255014,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,4,user_5257,0.17543588952322173,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,5,user_2438,0.17146735032423466,True,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,6,user_4732,0.17026055705300988,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,7,user_4726,0.16822015090989792,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,8,user_5032,0.16789722386296516,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,9,user_4827,0.16723047506986322,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,10,user_4367,0.16571928290336685,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+eigenvector,1,user_2438,0.6738925445031235,True,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,2,user_3156,0.4394844085776825,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,3,user_3110,0.1987395895437507,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,4,user_2599,0.18341331473802744,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,5,user_2341,0.1731885576941366,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,6,user_3120,0.1346570770680361,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,7,user_3129,0.10368768667445911,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,8,user_2254,0.09880149829165354,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,9,user_3197,0.09288660097386894,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,10,user_2460,0.08893597369940817,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+pagerank,1,user_2438,0.022320048305958583,True,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,2,user_1011,0.01501088951227831,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,3,user_0265,0.01362586815333808,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,4,user_1119,0.01333576721566748,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,5,user_0276,0.010137542773230965,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,6,user_4295,0.009299720069254776,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,7,user_2815,0.0072876722291540024,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,8,user_5009,0.006882254023315169,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,9,user_1331,0.006042230073088732,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,10,user_4710,0.005865083726116014,False,Pengaruh berdasarkan arah dan bobot interaksi masuk

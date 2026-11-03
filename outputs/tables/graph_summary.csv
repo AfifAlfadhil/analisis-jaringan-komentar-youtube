@@ -1,0 +1,8 @@
+metric,value
+nodes,2302.0
+edges,2605.0
+density,0.000492
+weakly_connected_components,338.0
+lcc_nodes,1138.0
+lcc_share_of_nodes,0.4944
+components_with_2_nodes,195.0

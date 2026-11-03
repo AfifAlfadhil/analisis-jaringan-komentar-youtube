@@ -1,0 +1,17 @@
+# Rahasia
+.env
+
+# Pemetaan akun anonim -> handle asli (privat)
+data/processed/author_map.csv
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

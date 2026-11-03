@@ -1,0 +1,48 @@
+Judul : Analisis Jaringan Interaksi Publik, Pemetaan Isu, dan Analisis Sentimen Terkait Spekulasi Pillres 2029 pada Diskusi Komentar Youtube
+
+1. Deskripsi Final Project
+
+Project ini menganalisis pola interaksi, perdebatan, isu, dan sentimen publik pada diskusi komentar video YouTube yang membahas dinamika tokoh politik menuju Pilpres 2029. Analisis dilakukan menggunakan pendekatan Social Network Analysis (SNA) untuk memetakan dan memvisualisasikan hubungan antar-pengguna melalui aktivitas komentar dan balasan (reply), mengidentifikasi pengguna dengan tingkat interaksi tinggi, mengukur peran pengguna dalam jaringan melalui metrik centrality, serta melakukan community detection untuk menemukan kelompok-kelompok diskusi berdasarkan pola interaksi yang terbentuk. Dari hasil pembagian komunitas tersebut, project ini melakukan analisis isu untuk mengidentifikasi topik, kata kunci, dan tema dominan yang sering muncul dalam diskusi serta memetakan perbedaan isu pada masing-masing komunitas. Selain itu, dilakukan analisis sentimen untuk mengklasifikasikan komentar ke dalam kategori positif, negatif, dan netral, serta membandingkan kecenderungan opini publik antar komunitas terhadap isu atau tokoh yang dibahas.
+
+2. Data yang Akan Dipresentasikan
+Data yang digunakan berasal dari komentar dan interaksi pengguna pada video YouTube yang membahas dinamika politik dan spekulasi tokoh politik menuju Pilpres 2029. Pengumpulan data dilakukan berdasarkan kata kunci pencarian:
+- Pilpres 2029
+- Kandidat Presiden 2029
+- Calon Presiden 2029
+- Prediksi Pilpres 2029
+- Bursa Capres 2029
+
+Data yang dikumpulkan meliputi:
+
+a. Data Video YouTube
+- Judul video
+- Nama channel
+- Tanggal publikasi
+- Jumlah views
+- Jumlah likes
+- Jumlah komentar
+- Deskripsi video
+
+b. Data Komentar Pengguna
+- Username atau ID pengguna
+- Isi komentar
+- Waktu komentar dibuat
+- Jumlah like komentar
+- Jumlah reply komentar
+
+c. Data Interaksi Antar Pengguna
+Data interaksi digunakan untuk membangun jaringan sosial antar pengguna melalui aktivitas komentar dan balasan (reply), meliputi:
+- User yang memberikan komentar
+- User yang memberikan balasan
+- Hubungan antar pengguna berdasarkan aktivitas diskusi
+
+3. Urgensi dan Manfaat Final Project
+
+Urgensi:
+YouTube menjadi salah satu ruang publik digital yang digunakan masyarakat untuk berdiskusi mengenai isu politik, termasuk spekulasi kandidat menuju Pilpres 2029. Banyaknya komentar dan interaksi pengguna membuat pola diskusi, pembentukan komunitas, serta kecenderungan opini publik sulit dianalisis secara manual. Oleh karena itu, diperlukan pendekatan Social Media Analytics untuk memahami pola interaksi, isu yang berkembang, dan sentimen publik berdasarkan data komentar YouTube.
+
+Manfaat:
+- Mengidentifikasi pola interaksi dan komunitas pengguna dalam diskusi YouTube.
+- Mengetahui isu utama yang sering dibahas terkait Pilpres 2029.
+- Menganalisis kecenderungan sentimen publik terhadap diskusi politik digital.
+- Menerapkan metode Social Network Analysis, text mining, dan sentiment analysis pada data media sosial.
