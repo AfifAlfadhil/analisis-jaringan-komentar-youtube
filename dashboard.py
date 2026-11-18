@@ -33,9 +33,21 @@ import streamlit as st
 BASE = Path(__file__).resolve().parent
 TABLES = BASE / "outputs" / "tables"
 PROCESSED = BASE / "data" / "processed"
+TABLE_DIRS = (
+    BASE / "outputs" / "community_detection" / "tables",
+    BASE / "outputs" / "topic_extraction" / "tables",
+    BASE / "outputs" / "sentiment_analysis" / "tables",
+    BASE / "outputs" / "community_comparison" / "tables",
+    TABLES,
+)
+PROCESSED_DIRS = {
+    "comments_with_community.csv": BASE / "data" / "processed" / "community_detection",
+    "sentiment_predictions.csv": BASE / "data" / "processed" / "sentiment_analysis",
+    "comment_topics.csv": BASE / "data" / "processed" / "topic_extraction",
+}
 GRAPH = BASE / "outputs" / "graph" / "network.graphml"
 
-SMALL, NONE = "small", "tanpa_interaksi"
+SMALL, NONE = "kecil", "tanpa_interaksi"
 LABELS = ["positif", "netral", "negatif"]
 SENT_COLORS = {"positif": "#2a78d6", "netral": "#b4b2a9", "negatif": "#d1453b"}
 OUTLIER_PREFIX = "outlier"
@@ -106,10 +118,18 @@ def page_header(title: str, sub: str = ""):
 # --------------------------------------------------------------------------- #
 @st.cache_data
 def tbl(name: str, folder: str = "tables") -> pd.DataFrame | None:
-    path = (TABLES if folder == "tables" else PROCESSED) / name
-    if not path.exists():
+    if folder == "processed":
+        candidates = [PROCESSED_DIRS.get(name, PROCESSED) / name, PROCESSED / name]
+    else:
+        candidates = [directory / name for directory in TABLE_DIRS]
+    path = next((candidate for candidate in candidates if candidate.exists()), None)
+    if path is None:
         return None
-    return pd.read_csv(path, encoding="utf-8-sig")
+    df = pd.read_csv(path, encoding="utf-8-sig")
+    for column in ("community_id", "community_group"):
+        if column in df:
+            df[column] = df[column].replace({"small": SMALL})
+    return df
 
 
 def community_order(ids) -> list:
@@ -328,7 +348,7 @@ elif page == "Jaringan":
     if nodes is None or assign is None:
         missing("Graf atau komunitas", "python build_graph.py dan python detect_communities.py")
     else:
-        nodes = nodes.merge(assign[["author_id", "community_id", "is_channel_owner"]], on="author_id", how="left")
+        nodes = nodes.merge(assign[["author_id", "community_id"]], on="author_id", how="left")
         nodes["community_id"] = nodes["community_id"].fillna(SMALL)
         with st.container(border=True):
             only_main = st.toggle("Sembunyikan akun di komunitas kecil", value=False)
@@ -380,7 +400,10 @@ elif page == "Jaringan":
                 r = roles.rename(columns={"author_id": "Akun", "roles": "Peran", "in_degree": "In-degree",
                                           "out_degree": "Out-degree", "betweenness": "Betweenness",
                                           "is_channel_owner": "Pemilik kanal"})
-                st.dataframe(r[["Akun", "Peran", "In-degree", "Out-degree", "Betweenness", "Pemilik kanal"]],
+                columns = ["Akun", "Peran", "In-degree", "Out-degree", "Betweenness"]
+                if "Pemilik kanal" in r:
+                    columns.append("Pemilik kanal")
+                st.dataframe(r[columns],
                              hide_index=True, use_container_width=True, height=360,
                              column_config={"Betweenness": st.column_config.NumberColumn(format="%.4f")})
     with b:

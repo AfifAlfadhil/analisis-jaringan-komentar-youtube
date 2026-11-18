@@ -10,33 +10,36 @@ pip install -r requirements-nlp.txt   # BERTopic + IndoBERT (Tahap 7–8), ukura
 # isi YOUTUBE_API_KEY di .env (salin dari .env.example)
 
 python main.py                 # Tahap 1: kumpulkan video + komentar + reply -> data/raw/
-python preprocess.py           # Tahap 2: -> data/processed/comments_clean.csv, author_map.csv (privat)
+# Tahap 2: siapkan data/processed/comments_clean.csv dan author_map.csv (privat)
 python build_graph.py          # Tahap 3: -> data/processed/edges.csv, outputs/graph/network.graphml
 python analyze_network.py      # Tahap 4: -> network_stats, centrality, top_actors, actor_roles, figures/
-python detect_communities.py   # Tahap 5: -> community_{sweep,assignment,stats,summary}.csv
-python join_communities.py     # Tahap 6: -> data/processed/comments_with_community.csv, join_summary.csv
-python extract_entities.py     # Tahap 7: nama tokoh per komunitas -> entity_*.csv, heatmap
-python topic_modeling.py       # Tahap 7: TF-IDF (community_keywords) + BERTopic (topics, topic_by_community)
-python sentiment_analysis.py --make-sample   # Tahap 8a: sampel 400 komentar untuk dilabeli manual
-python sentiment_analysis.py   # Tahap 8b: leksikon + IndoBERT, evaluasi bila label manual sudah diisi
-python compare_communities.py  # Tahap 9: sentimen per komunitas, chi-square, Cramér's V, uji permutasi
+python -m stages.community_detection.detect_communities
+python -m stages.community_detection.join_communities
+python -m stages.topic_extraction.extract_entities
+python -m stages.topic_extraction.topic_modeling
+python -m stages.sentiment_analysis.sentiment_analysis --make-sample
+python -m stages.sentiment_analysis.sentiment_analysis
+python -m stages.community_comparison.compare_communities
 ```
 
+Perintah lama seperti `python detect_communities.py` tetap didukung sebagai wrapper.
 Dashboard interaktif (membaca hasil di `outputs/`, tidak menjalankan ulang model):
 `streamlit run dashboard.py` lalu buka alamat yang muncul (biasanya http://localhost:8501).
 
-Atau sekaligus: `python run_all.py` (Tahap 2–9), `python run_all.py --from 6`, atau
-`python run_all.py --fast` (tanpa BERTopic/IndoBERT, untuk uji cepat).
+Atau sekaligus: `python run_all.py --from 5` (community detection sampai Tahap 9),
+`python run_all.py --from 6`, atau `python run_all.py --from 5 --fast`
+(tanpa BERTopic/IndoBERT, untuk uji cepat). Checkout ini tidak menyertakan `preprocess.py`,
+jadi tahap preprocessing harus disediakan sebelum menjalankan `run_all.py` dari Tahap 2.
 
 ## Tahap 6–9 — ringkasan
 
 | Tahap | Skrip | Output utama | Catatan |
 |---|---|---|---|
-| 6 | `join_communities.py` | `comments_with_community.csv` | Komentar ikut komunitas penulisnya; penulis di luar graf = `tanpa_interaksi` (pembanding). |
-| 7 | `extract_entities.py` | `entity_top_by_community.csv`, `entity_pairs_by_community.csv` | Kamus tokoh di `src/entities.py`; cek `candidate_discovery.csv` untuk alias baru. |
-| 7 | `topic_modeling.py` | `community_keywords.csv` (c-TF-IDF), `topics.csv`, `themes.csv`, `theme_by_community.csv` | Beri nama topik di `topic_labels.csv` (kolom `label_manual`) lalu jalankan ulang; topik bernama sama digabung menjadi satu tema. |
-| 8 | `sentiment_analysis.py` | `sentiment_predictions.csv`, `sentiment_eval.csv`, `sentiment_agreement.csv` | Model default di `config.SENTIMENT_MODEL`. Label manual di `data/processed/sentiment_label_sample.csv`. |
-| 9 | `compare_communities.py` | `sentiment_by_community.csv`, `sentiment_tests.csv`, `entity_sentiment_by_community.csv` | Versi komentar & versi akun; uji permutasi di dalam video mengontrol efek video. |
+| 6 | `stages/community_detection/join_communities.py` | `data/processed/community_detection/comments_with_community.csv` | Membaca assignment dengan kolom `author_id`, `community_id`; akun tanpa assignment menjadi `tanpa_interaksi`. |
+| 7 | `stages/topic_extraction/extract_entities.py` | `outputs/topic_extraction/tables/entity_*.csv` | Kamus tokoh di `stages/topic_extraction/entities.py`; cek `candidate_discovery.csv` untuk alias baru. |
+| 7 | `stages/topic_extraction/topic_modeling.py` | `outputs/topic_extraction/tables/` | c-TF-IDF, BERTopic, tema; edit `topic_labels.csv` lalu jalankan ulang. |
+| 8 | `stages/sentiment_analysis/sentiment_analysis.py` | `outputs/sentiment_analysis/tables/` | Prediksi dan evaluasi; sampel label ada di `data/processed/sentiment_analysis/`. |
+| 9 | `stages/community_comparison/compare_communities.py` | `outputs/community_comparison/` | Mengambil assignment terbaru dari hasil Tahap 6 berdasarkan `comment_id`, lalu membandingkan sentimen, topik, dan tokoh. |
 
 Pedoman label manual sentimen: **positif** = mendukung/memuji/berharap baik; **negatif** = menolak,
 mengkritik, menghina, menyindir (sarkasme dilabeli sesuai maksudnya); **netral** = pertanyaan,
@@ -73,32 +76,41 @@ Skema `data/raw/comments.csv` (satu baris = satu komentar atau reply): `comment_
 ├── .env.example / .env       # API key (.env jangan dibagikan)
 ├── config.py                 # path dan parameter terpusat
 ├── main.py                   # Tahap 1: pengambilan data (CLI)
-├── preprocess.py             # Tahap 2
 ├── build_graph.py            # Tahap 3
 ├── analyze_network.py        # Tahap 4
-├── detect_communities.py     # Tahap 5
-├── join_communities.py       # Tahap 6
-├── extract_entities.py       # Tahap 7 (nama tokoh)
-├── topic_modeling.py         # Tahap 7 (TF-IDF + BERTopic)
-├── sentiment_analysis.py     # Tahap 8
-├── compare_communities.py    # Tahap 9
+├── stages/
+│   ├── community_detection/   # deteksi komunitas + join komentar
+│   ├── topic_extraction/      # skrip, kamus entitas, dan logika topik
+│   ├── sentiment_analysis/    # skrip dan logika prediksi/evaluasi
+│   └── community_comparison/  # analisis lintas komunitas
+├── detect_communities.py      # wrapper kompatibilitas
+├── join_communities.py        # wrapper kompatibilitas
+├── extract_entities.py        # wrapper kompatibilitas
+├── topic_modeling.py          # wrapper kompatibilitas
+├── sentiment_analysis.py      # wrapper kompatibilitas
+├── compare_communities.py     # wrapper kompatibilitas
 ├── run_all.py                # menjalankan Tahap 2–9
 ├── dashboard.py              # dashboard Streamlit (hasil Tahap 4–9)
 ├── src/
 │   ├── youtube_collector.py  # YouTube API
-│   ├── preprocessing.py
-│   ├── lexicons.py           # slang, stopword, pola spam
 │   ├── network.py
 │   ├── sna.py                # statistik jaringan, centrality
 │   ├── community.py          # Louvain/Leiden, kestabilan, statistik komunitas
-│   ├── entities.py           # kamus tokoh & partai
-│   ├── topics.py             # frekuensi kata, c-TF-IDF, BERTopic, koherensi
-│   ├── sentiment.py          # leksikon, IndoBERT, metrik evaluasi
 │   └── plots.py              # heatmap & bar sentimen
 ├── data/
 │   ├── raw/                  # videos.csv, comments.csv (jangan diubah)
-│   └── processed/            # comments_clean, edges, author_map (privat)
-├── outputs/                  # graph/, tables/, figures/
+│   └── processed/
+│       ├── community_detection/
+│       ├── topic_extraction/
+│       └── sentiment_analysis/
+├── outputs/
+│   ├── community_detection/
+│   ├── topic_extraction/
+│   ├── sentiment_analysis/
+│   ├── community_comparison/
+│   ├── graph/                # graf jaringan
+│   ├── figures/              # visualisasi jaringan (Tahap 4)
+│   └── tables/               # tabel analisis jaringan (Tahap 4)
 └── docs/                     # proposal dan plan
 ```
 

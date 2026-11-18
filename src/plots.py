@@ -23,10 +23,11 @@ SEQ_BLUES = ["#f4f8fd", "#cde2fb", "#9ec5f4", "#6da7ec", "#3987e5", "#256abf", "
 SENTIMENT_COLORS = {"positif": "#2a78d6", "netral": "#b4b2a9", "negatif": "#d1453b"}
 
 
-def community_order(ids: Sequence[str], small: str = "small", none: str = "tanpa_interaksi") -> List[str]:
+def community_order(ids: Sequence[str], small: str = "kecil", none: str = "tanpa_interaksi") -> List[str]:
     ids = set(ids)
-    main = sorted(i for i in ids if i not in (small, none))
-    return main + [i for i in (small, none) if i in ids]
+    small_labels = {small, "small"}
+    main = sorted(i for i in ids if i not in small_labels and i != none)
+    return main + [i for i in (small, "small", none) if i in ids]
 
 
 def heatmap(mat: pd.DataFrame, path, title: str, cbar_label: str, row_sizes: pd.Series | None = None,

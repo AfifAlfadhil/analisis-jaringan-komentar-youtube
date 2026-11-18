@@ -1,0 +1,16 @@
+metric,value
+algorithm_final,leiden
+resolution_final,1.0
+n_seeds,20
+modularity_final,0.9401833569786764
+n_communities_final,365
+n_communities_min_size,19
+nodes_in_min_size_communities,1120
+nmi_all_nodes,0.36126022059544716
+ari_all_nodes,0.0396470353664426
+nmi_nodes_min_size,0.6009312037502592
+ari_nodes_min_size,0.3106071562575816
+ari_louvain_vs_leiden,0.9630061091267363
+without_owners_n_removed,10
+without_owners_modularity,0.9493470307451872
+without_owners_ari,0.8214837309597383

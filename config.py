@@ -38,15 +38,40 @@ YOUTUBE_API_VERSION = "v3"
 # --------------------------------------------------------------------------- #
 # Direktori
 #   data/raw        : hasil API (jangan diubah manual)
-#   data/processed  : data bersih, edges, komentar + komunitas
-#   outputs/        : tabel, graf, dan gambar hasil analisis
+#   data/processed  : data bersih, edges, dan data perantara tiap tahap
+#   outputs/        : hasil analisis yang dipisah menurut tahap
 # --------------------------------------------------------------------------- #
 RAW_DIR = BASE_DIR / "data" / "raw"
 PROCESSED_DIR = BASE_DIR / "data" / "processed"
+COMMUNITY_PROCESSED_DIR = PROCESSED_DIR / "community_detection"
+TOPIC_PROCESSED_DIR = PROCESSED_DIR / "topic_extraction"
+SENTIMENT_PROCESSED_DIR = PROCESSED_DIR / "sentiment_analysis"
+OUTPUTS_DIR = BASE_DIR / "outputs"
 TABLES_DIR = BASE_DIR / "outputs" / "tables"
 GRAPH_DIR = BASE_DIR / "outputs" / "graph"
 FIGURES_DIR = BASE_DIR / "outputs" / "figures"
-for _d in (RAW_DIR, PROCESSED_DIR, TABLES_DIR, GRAPH_DIR, FIGURES_DIR):
+COMMUNITY_TABLES_DIR = OUTPUTS_DIR / "community_detection" / "tables"
+TOPIC_TABLES_DIR = OUTPUTS_DIR / "topic_extraction" / "tables"
+SENTIMENT_TABLES_DIR = OUTPUTS_DIR / "sentiment_analysis" / "tables"
+COMPARISON_TABLES_DIR = OUTPUTS_DIR / "community_comparison" / "tables"
+TOPIC_FIGURES_DIR = OUTPUTS_DIR / "topic_extraction" / "figures"
+COMPARISON_FIGURES_DIR = OUTPUTS_DIR / "community_comparison" / "figures"
+for _d in (
+    RAW_DIR,
+    PROCESSED_DIR,
+    COMMUNITY_PROCESSED_DIR,
+    TOPIC_PROCESSED_DIR,
+    SENTIMENT_PROCESSED_DIR,
+    TABLES_DIR,
+    GRAPH_DIR,
+    FIGURES_DIR,
+    COMMUNITY_TABLES_DIR,
+    TOPIC_TABLES_DIR,
+    SENTIMENT_TABLES_DIR,
+    COMPARISON_TABLES_DIR,
+    TOPIC_FIGURES_DIR,
+    COMPARISON_FIGURES_DIR,
+):
     _d.mkdir(parents=True, exist_ok=True)
 
 RAW_VIDEOS_PATH = RAW_DIR / "videos.csv"
@@ -86,8 +111,16 @@ COMMUNITY_MIN_SIZE = 20
 # --------------------------------------------------------------------------- #
 # Tahap 6 — Join komentar ke komunitas
 # --------------------------------------------------------------------------- #
-LABEL_SMALL = "small"                       # akun di komunitas < COMMUNITY_MIN_SIZE
+LABEL_SMALL = "kecil"                       # label dari src.community untuk komunitas kecil
+LEGACY_LABEL_SMALL = "small"
 LABEL_NO_INTERACTION = "tanpa_interaksi"    # akun yang tidak masuk graf (tidak pernah membalas/dibalas)
+
+
+def normalize_community_label(label):
+    """Map the earlier small-community label to the current community output label."""
+    if isinstance(label, str) and label == LEGACY_LABEL_SMALL:
+        return LABEL_SMALL
+    return label
 
 # --------------------------------------------------------------------------- #
 # Tahap 7 — Pemetaan isu (TF-IDF + BERTopic)
