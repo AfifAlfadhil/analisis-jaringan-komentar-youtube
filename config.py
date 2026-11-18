@@ -76,14 +76,12 @@ MAX_SEARCH_PAGES = 3                  # batas halaman search per kata kunci (100
 DEFAULT_MAX_THREADS_PER_VIDEO = 100   # batas thread (komentar tingkat atas) per video; semua reply tiap thread diambil
 DEFAULT_COMMENT_ORDER = "relevance"   # "relevance" atau "time"
 
-# --------------------------------------------------------------------------- #
-# Community detection (Tahap 5)
-# --------------------------------------------------------------------------- #
-COMMUNITY_ALGORITHM = "leiden"             # algoritma final: "leiden" atau "louvain"
-COMMUNITY_RESOLUTION = 1.0                 # resolution final (lihat outputs/tables/community_sweep.csv)
-COMMUNITY_RESOLUTIONS = [0.5, 0.75, 1.0, 1.5, 2.0]   # nilai yang dicoba pada sweep
-COMMUNITY_N_SEEDS = 20                     # jumlah seed untuk uji kestabilan
-COMMUNITY_MIN_SIZE = 20                    # komunitas lebih kecil digabung jadi "small"
+# Community detection
+COMMUNITY_ALGORITHM = "leiden"
+COMMUNITY_RESOLUTION = 1.0
+COMMUNITY_RESOLUTIONS = [0.5, 0.75, 1.0, 1.5, 2.0]
+COMMUNITY_N_SEEDS = 20
+COMMUNITY_MIN_SIZE = 20
 
 # --------------------------------------------------------------------------- #
 # Tahap 6 — Join komentar ke komunitas

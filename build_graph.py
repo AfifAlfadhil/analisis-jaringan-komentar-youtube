@@ -1,44 +1,37 @@
-"""
-build_graph.py
-==============
-Tahap 3 — Membangun graf interaksi. Jalankan setelah preprocess.py:
-
-    python build_graph.py
-
-Input : data/processed/comments_clean.csv
-Output: data/processed/edges.csv            (source, target, weight, type)
-        data/processed/edges_selfloop.csv   (akun membalas/menyebut dirinya sendiri)
-        outputs/graph/network.graphml       (untuk NetworkX / Gephi)
-        outputs/graph/network.gexf          (untuk Gephi)
-        outputs/tables/graph_summary.csv
-"""
+"""Membangun graf dari reply komentar mentah."""
 
 import networkx as nx
 import pandas as pd
 
 import config
-from src.network import build_edges, build_graph, graph_summary
+from src.network import build_edges, build_graph, prepare_accounts
 
 
 def main():
-    df = pd.read_csv(config.PROCESSED_DIR / "comments_clean.csv")
-    df["mentions"] = df["mentions"].fillna("")
-
-    edges, selfloops = build_edges(df)
-    g = build_graph(edges, df)
-    summary = graph_summary(g)
+    df = pd.read_csv(config.RAW_COMMENTS_PATH, dtype=str, keep_default_na=False)
+    edges, selfloops, account_map = build_edges(df)
+    g = build_graph(edges)
+    prepared, _ = prepare_accounts(df)
+    activity = prepared.groupby("author_id").agg(
+        n_comments=("comment_id", "size"),
+        n_videos=("video_id", "nunique"),
+    )
+    for node in g.nodes:
+        if node in activity.index:
+            g.nodes[node]["n_comments"] = int(activity.at[node, "n_comments"])
+            g.nodes[node]["n_videos"] = int(activity.at[node, "n_videos"])
+        else:
+            g.nodes[node]["n_comments"] = 0
+            g.nodes[node]["n_videos"] = 0
 
     edges.to_csv(config.PROCESSED_DIR / "edges.csv", index=False)
     selfloops.to_csv(config.PROCESSED_DIR / "edges_selfloop.csv", index=False)
+    account_map.to_csv(config.PROCESSED_DIR / "author_map.csv", index=False)
     nx.write_graphml(g, config.GRAPH_DIR / "network.graphml")
     nx.write_gexf(g, config.GRAPH_DIR / "network.gexf")
-    summary.to_csv(config.TABLES_DIR / "graph_summary.csv", index=False)
 
-    print("Edge per tipe:")
-    print(edges.groupby("type")["weight"].agg(pairs="size", interactions="sum").to_string())
-    print(f"Self-loop dipisahkan: {len(selfloops)} pasangan ({int(selfloops['weight'].sum()) if len(selfloops) else 0} interaksi)")
-    print("\nRingkasan graf:")
-    print(summary.to_string(index=False))
+    print(f"Graf: {g.number_of_nodes()} akun, {g.number_of_edges()} hubungan")
+    print(f"Edge tersimpan: {config.PROCESSED_DIR / 'edges.csv'}")
 
 
 if __name__ == "__main__":
