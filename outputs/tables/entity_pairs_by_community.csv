@@ -1,0 +1,524 @@
+﻿community_id,tokoh_a,tokoh_b,n_comments
+C01,Joko Widodo,Prabowo Subianto,5
+C01,Gibran Rakabuming,Joko Widodo,4
+C01,Anies Baswedan,Prabowo Subianto,3
+C01,Gibran Rakabuming,Prabowo Subianto,3
+C01,Agus H. Yudhoyono (AHY),Gibran Rakabuming,2
+C01,Anies Baswedan,Gibran Rakabuming,2
+C01,Bahlil Lahadalia,Gibran Rakabuming,1
+C01,Anies Baswedan,Joko Widodo,1
+C02,Dedi Mulyadi (KDM),Gibran Rakabuming,10
+C02,Anies Baswedan,Dedi Mulyadi (KDM),9
+C02,Dedi Mulyadi (KDM),Prabowo Subianto,8
+C02,Basuki T. Purnama (Ahok),Dedi Mulyadi (KDM),8
+C02,Anies Baswedan,Basuki T. Purnama (Ahok),7
+C02,Agus H. Yudhoyono (AHY),Dedi Mulyadi (KDM),6
+C02,Dedi Mulyadi (KDM),Sherly Tjoanda,5
+C02,Agus H. Yudhoyono (AHY),Prabowo Subianto,5
+C02,Gibran Rakabuming,Prabowo Subianto,5
+C02,Agus H. Yudhoyono (AHY),Anies Baswedan,4
+C02,Dedi Mulyadi (KDM),Purbaya Yudhi Sadewa,3
+C02,Dedi Mulyadi (KDM),Teddy Indra Wijaya,3
+C02,Agus H. Yudhoyono (AHY),Gibran Rakabuming,3
+C02,Anies Baswedan,Gibran Rakabuming,3
+C02,Ganjar Pranowo,Prabowo Subianto,2
+C02,Agus H. Yudhoyono (AHY),Basuki T. Purnama (Ahok),2
+C02,Agus H. Yudhoyono (AHY),Sherly Tjoanda,2
+C02,Anies Baswedan,Sherly Tjoanda,2
+C02,Basuki T. Purnama (Ahok),Sherly Tjoanda,2
+C02,Dedi Mulyadi (KDM),Joko Widodo,2
+C02,Basuki T. Purnama (Ahok),Gibran Rakabuming,2
+C02,Anies Baswedan,Prabowo Subianto,2
+C02,Prabowo Subianto,Teddy Indra Wijaya,1
+C02,Dedi Mulyadi (KDM),Susi Pudjiastuti,1
+C02,Anies Baswedan,Joko Widodo,1
+C02,Gibran Rakabuming,Joko Widodo,1
+C02,Gibran Rakabuming,Rizieq Shihab (HRS),1
+C02,Joko Widodo,Rizieq Shihab (HRS),1
+C02,Joko Widodo,Prabowo Subianto,1
+C02,Anies Baswedan,Rizieq Shihab (HRS),1
+C02,Basuki T. Purnama (Ahok),Rizieq Shihab (HRS),1
+C02,Agus H. Yudhoyono (AHY),Ganjar Pranowo,1
+C02,Agus H. Yudhoyono (AHY),Mahfud MD,1
+C02,Agus H. Yudhoyono (AHY),Pramono Anung,1
+C02,Agus H. Yudhoyono (AHY),Puan Maharani,1
+C02,Agus H. Yudhoyono (AHY),Purbaya Yudhi Sadewa,1
+C02,Anies Baswedan,Ganjar Pranowo,1
+C02,Anies Baswedan,Mahfud MD,1
+C02,Anies Baswedan,Pramono Anung,1
+C02,Anies Baswedan,Puan Maharani,1
+C02,Anies Baswedan,Purbaya Yudhi Sadewa,1
+C02,Dedi Mulyadi (KDM),Ganjar Pranowo,1
+C02,Dedi Mulyadi (KDM),Mahfud MD,1
+C02,Dedi Mulyadi (KDM),Pramono Anung,1
+C02,Dedi Mulyadi (KDM),Puan Maharani,1
+C02,Ganjar Pranowo,Gibran Rakabuming,1
+C02,Ganjar Pranowo,Mahfud MD,1
+C02,Ganjar Pranowo,Pramono Anung,1
+C02,Ganjar Pranowo,Puan Maharani,1
+C02,Ganjar Pranowo,Purbaya Yudhi Sadewa,1
+C02,Ganjar Pranowo,Sherly Tjoanda,1
+C02,Gibran Rakabuming,Mahfud MD,1
+C02,Gibran Rakabuming,Pramono Anung,1
+C02,Gibran Rakabuming,Puan Maharani,1
+C02,Gibran Rakabuming,Purbaya Yudhi Sadewa,1
+C02,Gibran Rakabuming,Sherly Tjoanda,1
+C02,Mahfud MD,Prabowo Subianto,1
+C02,Mahfud MD,Pramono Anung,1
+C02,Mahfud MD,Puan Maharani,1
+C02,Mahfud MD,Purbaya Yudhi Sadewa,1
+C02,Mahfud MD,Sherly Tjoanda,1
+C02,Prabowo Subianto,Pramono Anung,1
+C02,Prabowo Subianto,Puan Maharani,1
+C02,Prabowo Subianto,Purbaya Yudhi Sadewa,1
+C02,Prabowo Subianto,Sherly Tjoanda,1
+C02,Pramono Anung,Puan Maharani,1
+C02,Pramono Anung,Purbaya Yudhi Sadewa,1
+C02,Pramono Anung,Sherly Tjoanda,1
+C02,Puan Maharani,Purbaya Yudhi Sadewa,1
+C02,Puan Maharani,Sherly Tjoanda,1
+C02,Purbaya Yudhi Sadewa,Sherly Tjoanda,1
+C02,Andi Amran Sulaiman,Dedi Mulyadi (KDM),1
+C02,Andi Amran Sulaiman,Gibran Rakabuming,1
+C02,Basuki T. Purnama (Ahok),Prabowo Subianto,1
+C03,Dedi Mulyadi (KDM),Gibran Rakabuming,11
+C03,Gibran Rakabuming,Joko Widodo,5
+C03,Basuki T. Purnama (Ahok),Ganjar Pranowo,3
+C03,Dedi Mulyadi (KDM),Joko Widodo,1
+C03,Anies Baswedan,Tifauzia Tyassuma (dr. Tifa),1
+C03,Anies Baswedan,Rizieq Shihab (HRS),1
+C03,Roy Suryo,Tifauzia Tyassuma (dr. Tifa),1
+C03,Gibran Rakabuming,Prabowo Subianto,1
+C03,Joko Widodo,Prabowo Subianto,1
+C03,Agus H. Yudhoyono (AHY),Anies Baswedan,1
+C03,Agus H. Yudhoyono (AHY),Puan Maharani,1
+C03,Anies Baswedan,Puan Maharani,1
+C03,Dedi Mulyadi (KDM),Prabowo Subianto,1
+C04,Gibran Rakabuming,Prabowo Subianto,5
+C04,Gibran Rakabuming,Joko Widodo,4
+C04,Joko Widodo,Prabowo Subianto,2
+C04,Dedi Mulyadi (KDM),Gibran Rakabuming,2
+C04,Agus H. Yudhoyono (AHY),Gibran Rakabuming,1
+C04,Agus H. Yudhoyono (AHY),Puan Maharani,1
+C04,Gibran Rakabuming,Puan Maharani,1
+C04,Agus H. Yudhoyono (AHY),Anies Baswedan,1
+C04,Agus H. Yudhoyono (AHY),Susilo B. Yudhoyono (SBY),1
+C04,Anies Baswedan,Susilo B. Yudhoyono (SBY),1
+C04,Joko Widodo,Megawati Soekarnoputri,1
+C05,Dedi Mulyadi (KDM),Gibran Rakabuming,4
+C05,Dedi Mulyadi (KDM),Prabowo Subianto,4
+C05,Dedi Mulyadi (KDM),Joko Widodo,4
+C05,Gibran Rakabuming,Prabowo Subianto,2
+C05,Anies Baswedan,Dedi Mulyadi (KDM),1
+C05,Anies Baswedan,Gibran Rakabuming,1
+C05,Anies Baswedan,Prabowo Subianto,1
+C05,Agus H. Yudhoyono (AHY),Anies Baswedan,1
+C05,Agus H. Yudhoyono (AHY),Muhaimin Iskandar,1
+C05,Agus H. Yudhoyono (AHY),Puan Maharani,1
+C05,Agus H. Yudhoyono (AHY),Rizieq Shihab (HRS),1
+C05,Anies Baswedan,Muhaimin Iskandar,1
+C05,Anies Baswedan,Puan Maharani,1
+C05,Anies Baswedan,Rizieq Shihab (HRS),1
+C05,Muhaimin Iskandar,Puan Maharani,1
+C05,Muhaimin Iskandar,Rizieq Shihab (HRS),1
+C05,Puan Maharani,Rizieq Shihab (HRS),1
+C06,Gibran Rakabuming,Prabowo Subianto,9
+C06,Dedi Mulyadi (KDM),Prabowo Subianto,5
+C06,Joko Widodo,Prabowo Subianto,3
+C06,Anies Baswedan,Prabowo Subianto,2
+C06,Gibran Rakabuming,Joko Widodo,2
+C06,Megawati Soekarnoputri,Susilo B. Yudhoyono (SBY),2
+C06,Agus H. Yudhoyono (AHY),Gibran Rakabuming,2
+C06,Agus H. Yudhoyono (AHY),Prabowo Subianto,2
+C06,Basuki T. Purnama (Ahok),Gibran Rakabuming,1
+C06,Basuki T. Purnama (Ahok),Joko Widodo,1
+C06,Anies Baswedan,Dedi Mulyadi (KDM),1
+C06,Megawati Soekarnoputri,Prabowo Subianto,1
+C06,Prabowo Subianto,Susilo B. Yudhoyono (SBY),1
+C06,Agus H. Yudhoyono (AHY),Joko Widodo,1
+C06,Anies Baswedan,Gibran Rakabuming,1
+C06,Prabowo Subianto,Pramono Anung,1
+C06,Dedi Mulyadi (KDM),Gibran Rakabuming,1
+C06,Gibran Rakabuming,Roy Suryo,1
+C07,Dedi Mulyadi (KDM),Gibran Rakabuming,8
+C07,Dedi Mulyadi (KDM),Prabowo Subianto,6
+C07,Basuki T. Purnama (Ahok),Dedi Mulyadi (KDM),5
+C07,Gibran Rakabuming,Prabowo Subianto,4
+C07,Basuki T. Purnama (Ahok),Gibran Rakabuming,4
+C07,Agus H. Yudhoyono (AHY),Dedi Mulyadi (KDM),3
+C07,Anies Baswedan,Dedi Mulyadi (KDM),3
+C07,Dedi Mulyadi (KDM),Mahfud MD,3
+C07,Joko Widodo,Prabowo Subianto,2
+C07,Andi Amran Sulaiman,Dedi Mulyadi (KDM),2
+C07,Agus H. Yudhoyono (AHY),Anies Baswedan,1
+C07,Mahfud MD,Rizieq Shihab (HRS),1
+C07,Agus H. Yudhoyono (AHY),Prabowo Subianto,1
+C07,Dedi Mulyadi (KDM),Sherly Tjoanda,1
+C07,Basuki T. Purnama (Ahok),Prabowo Subianto,1
+C07,Andi Amran Sulaiman,Gibran Rakabuming,1
+C07,Andi Amran Sulaiman,Joko Widodo,1
+C07,Andi Amran Sulaiman,Prabowo Subianto,1
+C07,Andi Amran Sulaiman,Purbaya Yudhi Sadewa,1
+C07,Dedi Mulyadi (KDM),Joko Widodo,1
+C07,Dedi Mulyadi (KDM),Purbaya Yudhi Sadewa,1
+C07,Gibran Rakabuming,Joko Widodo,1
+C07,Gibran Rakabuming,Purbaya Yudhi Sadewa,1
+C07,Joko Widodo,Purbaya Yudhi Sadewa,1
+C07,Prabowo Subianto,Purbaya Yudhi Sadewa,1
+C07,Gibran Rakabuming,Mahfud MD,1
+C07,Andi Amran Sulaiman,Basuki T. Purnama (Ahok),1
+C07,Andi Amran Sulaiman,Mahfud MD,1
+C07,Basuki T. Purnama (Ahok),Mahfud MD,1
+C08,Gibran Rakabuming,Prabowo Subianto,9
+C08,Dedi Mulyadi (KDM),Prabowo Subianto,5
+C08,Dedi Mulyadi (KDM),Gibran Rakabuming,4
+C08,Joko Widodo,Prabowo Subianto,3
+C08,Gibran Rakabuming,Joko Widodo,2
+C08,Anies Baswedan,Joko Widodo,1
+C08,Anies Baswedan,Prabowo Subianto,1
+C08,Gibran Rakabuming,Rizieq Shihab (HRS),1
+C08,Prabowo Subianto,Rizieq Shihab (HRS),1
+C08,Agus H. Yudhoyono (AHY),Dedi Mulyadi (KDM),1
+C08,Agus H. Yudhoyono (AHY),Gibran Rakabuming,1
+C08,Agus H. Yudhoyono (AHY),Prabowo Subianto,1
+C09,Gibran Rakabuming,Prabowo Subianto,6
+C09,Joko Widodo,Prabowo Subianto,6
+C09,Dedi Mulyadi (KDM),Gibran Rakabuming,3
+C09,Dedi Mulyadi (KDM),Prabowo Subianto,3
+C09,Gibran Rakabuming,Joko Widodo,2
+C09,Prabowo Subianto,Teddy Indra Wijaya,2
+C09,Joko Widodo,Megawati Soekarnoputri,1
+C09,Joko Widodo,Susilo B. Yudhoyono (SBY),1
+C09,Prabowo Subianto,Susilo B. Yudhoyono (SBY),1
+C09,Dedi Mulyadi (KDM),Joko Widodo,1
+C09,Basuki T. Purnama (Ahok),Dedi Mulyadi (KDM),1
+C09,Basuki T. Purnama (Ahok),Sherly Tjoanda,1
+C09,Basuki T. Purnama (Ahok),Susilo B. Yudhoyono (SBY),1
+C09,Dedi Mulyadi (KDM),Sherly Tjoanda,1
+C09,Dedi Mulyadi (KDM),Susilo B. Yudhoyono (SBY),1
+C09,Sherly Tjoanda,Susilo B. Yudhoyono (SBY),1
+C10,Agus H. Yudhoyono (AHY),Ganjar Pranowo,1
+C10,Agus H. Yudhoyono (AHY),Puan Maharani,1
+C10,Ganjar Pranowo,Puan Maharani,1
+C10,Gibran Rakabuming,Prabowo Subianto,1
+C11,Anies Baswedan,Dedi Mulyadi (KDM),8
+C11,Dedi Mulyadi (KDM),Prabowo Subianto,2
+C11,Dedi Mulyadi (KDM),Sherly Tjoanda,2
+C11,Dedi Mulyadi (KDM),Mahfud MD,2
+C11,Basuki T. Purnama (Ahok),Dedi Mulyadi (KDM),1
+C11,Basuki T. Purnama (Ahok),Mahfud MD,1
+C11,Basuki T. Purnama (Ahok),Sherly Tjoanda,1
+C11,Mahfud MD,Sherly Tjoanda,1
+C11,Dedi Mulyadi (KDM),Pramono Anung,1
+C11,Dedi Mulyadi (KDM),Puan Maharani,1
+C11,Prabowo Subianto,Pramono Anung,1
+C11,Prabowo Subianto,Puan Maharani,1
+C11,Pramono Anung,Puan Maharani,1
+C11,Joko Widodo,Prabowo Subianto,1
+C13,Megawati Soekarnoputri,Pramono Anung,1
+C13,Joko Widodo,Roy Suryo,1
+C13,Gibran Rakabuming,Joko Widodo,1
+C14,Gibran Rakabuming,Prabowo Subianto,8
+C14,Prabowo Subianto,Pramono Anung,2
+C14,Pramono Anung,Puan Maharani,2
+C14,Ganjar Pranowo,Pramono Anung,2
+C14,Basuki T. Purnama (Ahok),Gibran Rakabuming,2
+C14,Basuki T. Purnama (Ahok),Prabowo Subianto,2
+C14,Prabowo Subianto,Puan Maharani,1
+C14,Joko Widodo,Prabowo Subianto,1
+C14,Bahlil Lahadalia,Ridwan Kamil,1
+C14,Ganjar Pranowo,Puan Maharani,1
+C14,Gibran Rakabuming,Joko Widodo,1
+C14,Gibran Rakabuming,Kaesang Pangarep,1
+C14,Agus H. Yudhoyono (AHY),Basuki T. Purnama (Ahok),1
+C14,Agus H. Yudhoyono (AHY),Dedi Mulyadi (KDM),1
+C14,Agus H. Yudhoyono (AHY),Gibran Rakabuming,1
+C14,Agus H. Yudhoyono (AHY),Prabowo Subianto,1
+C14,Agus H. Yudhoyono (AHY),Sherly Tjoanda,1
+C14,Basuki T. Purnama (Ahok),Dedi Mulyadi (KDM),1
+C14,Basuki T. Purnama (Ahok),Sherly Tjoanda,1
+C14,Dedi Mulyadi (KDM),Gibran Rakabuming,1
+C14,Dedi Mulyadi (KDM),Prabowo Subianto,1
+C14,Dedi Mulyadi (KDM),Sherly Tjoanda,1
+C14,Gibran Rakabuming,Sherly Tjoanda,1
+C14,Prabowo Subianto,Sherly Tjoanda,1
+C15,Dedi Mulyadi (KDM),Gibran Rakabuming,2
+C15,Anies Baswedan,Dedi Mulyadi (KDM),2
+C15,Dedi Mulyadi (KDM),Sherly Tjoanda,2
+C15,Anies Baswedan,Gibran Rakabuming,1
+C15,Anies Baswedan,Sherly Tjoanda,1
+C15,Dedi Mulyadi (KDM),Susi Pudjiastuti,1
+C15,Gibran Rakabuming,Sherly Tjoanda,1
+C15,Gibran Rakabuming,Susi Pudjiastuti,1
+C15,Sherly Tjoanda,Susi Pudjiastuti,1
+C15,Dedi Mulyadi (KDM),Joko Widodo,1
+C16,Anies Baswedan,Prabowo Subianto,3
+C16,Dedi Mulyadi (KDM),Prabowo Subianto,2
+C16,Dedi Mulyadi (KDM),Rizieq Shihab (HRS),1
+C16,Gibran Rakabuming,Prabowo Subianto,1
+C16,Anies Baswedan,Dedi Mulyadi (KDM),1
+C16,Anies Baswedan,Puan Maharani,1
+C16,Anies Baswedan,Purbaya Yudhi Sadewa,1
+C16,Anies Baswedan,Roy Suryo,1
+C16,Dedi Mulyadi (KDM),Puan Maharani,1
+C16,Dedi Mulyadi (KDM),Purbaya Yudhi Sadewa,1
+C16,Dedi Mulyadi (KDM),Roy Suryo,1
+C16,Prabowo Subianto,Puan Maharani,1
+C16,Prabowo Subianto,Purbaya Yudhi Sadewa,1
+C16,Prabowo Subianto,Roy Suryo,1
+C16,Puan Maharani,Purbaya Yudhi Sadewa,1
+C16,Puan Maharani,Roy Suryo,1
+C16,Purbaya Yudhi Sadewa,Roy Suryo,1
+C17,Emha Ainun Nadjib (Cak Nun),Prabowo Subianto,1
+C18,Basuki T. Purnama (Ahok),Mahfud MD,3
+C18,Dedi Mulyadi (KDM),Mahfud MD,3
+C18,Dedi Mulyadi (KDM),Prabowo Subianto,2
+C18,Agus H. Yudhoyono (AHY),Basuki T. Purnama (Ahok),2
+C18,Agus H. Yudhoyono (AHY),Mahfud MD,2
+C18,Agus H. Yudhoyono (AHY),Purbaya Yudhi Sadewa,2
+C18,Basuki T. Purnama (Ahok),Purbaya Yudhi Sadewa,2
+C18,Mahfud MD,Purbaya Yudhi Sadewa,2
+C18,Dedi Mulyadi (KDM),Joko Widodo,1
+C18,Joko Widodo,Prabowo Subianto,1
+C18,Agus H. Yudhoyono (AHY),Dedi Mulyadi (KDM),1
+C18,Basuki T. Purnama (Ahok),Dedi Mulyadi (KDM),1
+C18,Dedi Mulyadi (KDM),Purbaya Yudhi Sadewa,1
+C18,Andi Amran Sulaiman,Dedi Mulyadi (KDM),1
+C18,Andi Amran Sulaiman,Mahfud MD,1
+C18,Agus H. Yudhoyono (AHY),Gibran Rakabuming,1
+C18,Basuki T. Purnama (Ahok),Gibran Rakabuming,1
+C18,Gibran Rakabuming,Mahfud MD,1
+C18,Gibran Rakabuming,Purbaya Yudhi Sadewa,1
+C19,Dedi Mulyadi (KDM),Gibran Rakabuming,3
+C19,Agus H. Yudhoyono (AHY),Dedi Mulyadi (KDM),3
+C19,Agus H. Yudhoyono (AHY),Sherly Tjoanda,2
+C19,Dedi Mulyadi (KDM),Sherly Tjoanda,2
+C19,Agus H. Yudhoyono (AHY),Gibran Rakabuming,2
+C19,Agus H. Yudhoyono (AHY),Puan Maharani,2
+C19,Dedi Mulyadi (KDM),Puan Maharani,2
+C19,Gibran Rakabuming,Puan Maharani,2
+C19,Dedi Mulyadi (KDM),Joko Widodo,1
+C19,Gibran Rakabuming,Joko Widodo,1
+C19,Anies Baswedan,Basuki T. Purnama (Ahok),1
+C19,Anies Baswedan,Puan Maharani,1
+C19,Basuki T. Purnama (Ahok),Puan Maharani,1
+C19,Agus H. Yudhoyono (AHY),Ganjar Pranowo,1
+C19,Agus H. Yudhoyono (AHY),Mahfud MD,1
+C19,Agus H. Yudhoyono (AHY),Muhaimin Iskandar,1
+C19,Dedi Mulyadi (KDM),Ganjar Pranowo,1
+C19,Dedi Mulyadi (KDM),Mahfud MD,1
+C19,Dedi Mulyadi (KDM),Muhaimin Iskandar,1
+C19,Ganjar Pranowo,Mahfud MD,1
+C19,Ganjar Pranowo,Muhaimin Iskandar,1
+C19,Ganjar Pranowo,Sherly Tjoanda,1
+C19,Mahfud MD,Muhaimin Iskandar,1
+C19,Mahfud MD,Sherly Tjoanda,1
+C19,Muhaimin Iskandar,Sherly Tjoanda,1
+C19,Basuki T. Purnama (Ahok),Sherly Tjoanda,1
+C19,Gibran Rakabuming,Sherly Tjoanda,1
+C19,Puan Maharani,Sherly Tjoanda,1
+C19,Mahfud MD,Puan Maharani,1
+small,Dedi Mulyadi (KDM),Gibran Rakabuming,46
+small,Gibran Rakabuming,Prabowo Subianto,28
+small,Dedi Mulyadi (KDM),Prabowo Subianto,23
+small,Basuki T. Purnama (Ahok),Dedi Mulyadi (KDM),21
+small,Gibran Rakabuming,Joko Widodo,16
+small,Joko Widodo,Prabowo Subianto,15
+small,Anies Baswedan,Prabowo Subianto,13
+small,Dedi Mulyadi (KDM),Joko Widodo,13
+small,Agus H. Yudhoyono (AHY),Prabowo Subianto,11
+small,Anies Baswedan,Dedi Mulyadi (KDM),11
+small,Dedi Mulyadi (KDM),Sherly Tjoanda,10
+small,Anies Baswedan,Joko Widodo,8
+small,Agus H. Yudhoyono (AHY),Anies Baswedan,6
+small,Anies Baswedan,Gibran Rakabuming,6
+small,Dedi Mulyadi (KDM),Purbaya Yudhi Sadewa,6
+small,Anies Baswedan,Ganjar Pranowo,5
+small,Ganjar Pranowo,Prabowo Subianto,5
+small,Agus H. Yudhoyono (AHY),Gibran Rakabuming,5
+small,Dedi Mulyadi (KDM),Susi Pudjiastuti,5
+small,Anies Baswedan,Basuki T. Purnama (Ahok),4
+small,Gibran Rakabuming,Kaesang Pangarep,4
+small,Agus H. Yudhoyono (AHY),Dedi Mulyadi (KDM),4
+small,Ganjar Pranowo,Joko Widodo,3
+small,Dedi Mulyadi (KDM),Ganjar Pranowo,3
+small,Prabowo Subianto,Puan Maharani,3
+small,Anies Baswedan,Purbaya Yudhi Sadewa,3
+small,Basuki T. Purnama (Ahok),Purbaya Yudhi Sadewa,3
+small,Joko Widodo,Megawati Soekarnoputri,3
+small,Megawati Soekarnoputri,Prabowo Subianto,3
+small,Basuki T. Purnama (Ahok),Susi Pudjiastuti,3
+small,Joko Widodo,Susilo B. Yudhoyono (SBY),3
+small,Prabowo Subianto,Susilo B. Yudhoyono (SBY),3
+small,Agus H. Yudhoyono (AHY),Joko Widodo,2
+small,Basuki T. Purnama (Ahok),Gibran Rakabuming,2
+small,Prabowo Subianto,Roy Suryo,2
+small,Basuki T. Purnama (Ahok),Prabowo Subianto,2
+small,Basuki T. Purnama (Ahok),Mahfud MD,2
+small,Dedi Mulyadi (KDM),Mahfud MD,2
+small,Andika Perkasa,Basuki T. Purnama (Ahok),2
+small,Megawati Soekarnoputri,Susilo B. Yudhoyono (SBY),2
+small,Agus H. Yudhoyono (AHY),Ganjar Pranowo,1
+small,Bobby Nasution,Gibran Rakabuming,1
+small,Dedi Mulyadi (KDM),Puan Maharani,1
+small,Basuki T. Purnama (Ahok),Megawati Soekarnoputri,1
+small,Ganjar Pranowo,Megawati Soekarnoputri,1
+small,Ganjar Pranowo,Pramono Anung,1
+small,Ganjar Pranowo,Puan Maharani,1
+small,Joko Widodo,Pramono Anung,1
+small,Joko Widodo,Puan Maharani,1
+small,Megawati Soekarnoputri,Pramono Anung,1
+small,Megawati Soekarnoputri,Puan Maharani,1
+small,Prabowo Subianto,Pramono Anung,1
+small,Pramono Anung,Puan Maharani,1
+small,Andika Perkasa,Ganjar Pranowo,1
+small,Joko Widodo,Rizieq Shihab (HRS),1
+small,Joko Widodo,Tifauzia Tyassuma (dr. Tifa),1
+small,Agus H. Yudhoyono (AHY),Puan Maharani,1
+small,Gibran Rakabuming,Rizieq Shihab (HRS),1
+small,Mahfud MD,Prabowo Subianto,1
+small,Mahfud MD,Teddy Indra Wijaya,1
+small,Prabowo Subianto,Purbaya Yudhi Sadewa,1
+small,Purbaya Yudhi Sadewa,Susi Pudjiastuti,1
+small,Andika Perkasa,Dedi Mulyadi (KDM),1
+small,Basuki T. Purnama (Ahok),Sherly Tjoanda,1
+small,Dedi Mulyadi (KDM),Megawati Soekarnoputri,1
+small,Dedi Mulyadi (KDM),Susilo B. Yudhoyono (SBY),1
+small,Dedi Mulyadi (KDM),Rizieq Shihab (HRS),1
+small,Agus H. Yudhoyono (AHY),Kaesang Pangarep,1
+small,Kaesang Pangarep,Prabowo Subianto,1
+small,Andika Perkasa,Pramono Anung,1
+small,Gibran Rakabuming,Susilo B. Yudhoyono (SBY),1
+small,Basuki T. Purnama (Ahok),Ganjar Pranowo,1
+small,Gibran Rakabuming,Purbaya Yudhi Sadewa,1
+small,Ganjar Pranowo,Gibran Rakabuming,1
+small,Anies Baswedan,Mahfud MD,1
+small,Andi Amran Sulaiman,Muhaimin Iskandar,1
+small,Sherly Tjoanda,Susi Pudjiastuti,1
+small,Pramono Anung,Sherly Tjoanda,1
+tanpa_interaksi,Dedi Mulyadi (KDM),Gibran Rakabuming,127
+tanpa_interaksi,Gibran Rakabuming,Prabowo Subianto,59
+tanpa_interaksi,Basuki T. Purnama (Ahok),Dedi Mulyadi (KDM),52
+tanpa_interaksi,Dedi Mulyadi (KDM),Prabowo Subianto,46
+tanpa_interaksi,Gibran Rakabuming,Joko Widodo,35
+tanpa_interaksi,Anies Baswedan,Prabowo Subianto,31
+tanpa_interaksi,Dedi Mulyadi (KDM),Sherly Tjoanda,29
+tanpa_interaksi,Joko Widodo,Prabowo Subianto,29
+tanpa_interaksi,Anies Baswedan,Dedi Mulyadi (KDM),27
+tanpa_interaksi,Dedi Mulyadi (KDM),Purbaya Yudhi Sadewa,22
+tanpa_interaksi,Dedi Mulyadi (KDM),Joko Widodo,21
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Gibran Rakabuming,19
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Dedi Mulyadi (KDM),19
+tanpa_interaksi,Anies Baswedan,Gibran Rakabuming,14
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Prabowo Subianto,14
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Anies Baswedan,14
+tanpa_interaksi,Dedi Mulyadi (KDM),Susi Pudjiastuti,13
+tanpa_interaksi,Prabowo Subianto,Pramono Anung,9
+tanpa_interaksi,Anies Baswedan,Joko Widodo,9
+tanpa_interaksi,Ganjar Pranowo,Prabowo Subianto,9
+tanpa_interaksi,Anies Baswedan,Gatot Nurmantyo,8
+tanpa_interaksi,Dedi Mulyadi (KDM),Mahfud MD,8
+tanpa_interaksi,Basuki T. Purnama (Ahok),Sherly Tjoanda,6
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Puan Maharani,6
+tanpa_interaksi,Prabowo Subianto,Teddy Indra Wijaya,6
+tanpa_interaksi,Andi Amran Sulaiman,Dedi Mulyadi (KDM),6
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Joko Widodo,5
+tanpa_interaksi,Anies Baswedan,Puan Maharani,5
+tanpa_interaksi,Dedi Mulyadi (KDM),Ganjar Pranowo,5
+tanpa_interaksi,Anies Baswedan,Pramono Anung,5
+tanpa_interaksi,Dedi Mulyadi (KDM),Pramono Anung,5
+tanpa_interaksi,Gibran Rakabuming,Kaesang Pangarep,5
+tanpa_interaksi,Anies Baswedan,Basuki T. Purnama (Ahok),5
+tanpa_interaksi,Basuki T. Purnama (Ahok),Pramono Anung,4
+tanpa_interaksi,Joko Widodo,Susilo B. Yudhoyono (SBY),4
+tanpa_interaksi,Ganjar Pranowo,Pramono Anung,4
+tanpa_interaksi,Prabowo Subianto,Puan Maharani,4
+tanpa_interaksi,Gibran Rakabuming,Pramono Anung,4
+tanpa_interaksi,Dedi Mulyadi (KDM),Rizieq Shihab (HRS),4
+tanpa_interaksi,Basuki T. Purnama (Ahok),Purbaya Yudhi Sadewa,4
+tanpa_interaksi,Ganjar Pranowo,Gibran Rakabuming,4
+tanpa_interaksi,Roy Suryo,Tifauzia Tyassuma (dr. Tifa),3
+tanpa_interaksi,Anies Baswedan,Sherly Tjoanda,3
+tanpa_interaksi,Prabowo Subianto,Sherly Tjoanda,3
+tanpa_interaksi,Basuki T. Purnama (Ahok),Mahfud MD,3
+tanpa_interaksi,Gibran Rakabuming,Sherly Tjoanda,3
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Susilo B. Yudhoyono (SBY),3
+tanpa_interaksi,Gibran Rakabuming,Susilo B. Yudhoyono (SBY),3
+tanpa_interaksi,Joko Widodo,Megawati Soekarnoputri,3
+tanpa_interaksi,Amien Rais,Puan Maharani,3
+tanpa_interaksi,Dedi Mulyadi (KDM),Puan Maharani,3
+tanpa_interaksi,Basuki T. Purnama (Ahok),Ganjar Pranowo,3
+tanpa_interaksi,Andi Amran Sulaiman,Sherly Tjoanda,3
+tanpa_interaksi,Ganjar Pranowo,Mahfud MD,3
+tanpa_interaksi,Prabowo Subianto,Susilo B. Yudhoyono (SBY),3
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Basuki T. Purnama (Ahok),3
+tanpa_interaksi,Basuki T. Purnama (Ahok),Prabowo Subianto,3
+tanpa_interaksi,Purbaya Yudhi Sadewa,Sherly Tjoanda,3
+tanpa_interaksi,Anies Baswedan,Ganjar Pranowo,3
+tanpa_interaksi,Gibran Rakabuming,Roy Suryo,2
+tanpa_interaksi,Dedi Mulyadi (KDM),Gatot Nurmantyo,2
+tanpa_interaksi,Pramono Anung,Puan Maharani,2
+tanpa_interaksi,Ganjar Pranowo,Puan Maharani,2
+tanpa_interaksi,Andika Perkasa,Basuki T. Purnama (Ahok),2
+tanpa_interaksi,Mahfud MD,Sherly Tjoanda,2
+tanpa_interaksi,Gibran Rakabuming,Puan Maharani,2
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Pramono Anung,2
+tanpa_interaksi,Anies Baswedan,Susilo B. Yudhoyono (SBY),2
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Amien Rais,2
+tanpa_interaksi,Gibran Rakabuming,Rizieq Shihab (HRS),2
+tanpa_interaksi,Andi Amran Sulaiman,Basuki T. Purnama (Ahok),2
+tanpa_interaksi,Andi Amran Sulaiman,Purbaya Yudhi Sadewa,2
+tanpa_interaksi,Ganjar Pranowo,Joko Widodo,2
+tanpa_interaksi,Prabowo Subianto,Rizieq Shihab (HRS),2
+tanpa_interaksi,Andi Amran Sulaiman,Prabowo Subianto,2
+tanpa_interaksi,Anies Baswedan,Mahfud MD,2
+tanpa_interaksi,Prabowo Subianto,Purbaya Yudhi Sadewa,2
+tanpa_interaksi,Joko Widodo,Pramono Anung,2
+tanpa_interaksi,Anies Baswedan,Roy Suryo,2
+tanpa_interaksi,Gibran Rakabuming,Tifauzia Tyassuma (dr. Tifa),1
+tanpa_interaksi,Joko Widodo,Roy Suryo,1
+tanpa_interaksi,Joko Widodo,Tifauzia Tyassuma (dr. Tifa),1
+tanpa_interaksi,Basuki T. Purnama (Ahok),Puan Maharani,1
+tanpa_interaksi,Amien Rais,Dedi Mulyadi (KDM),1
+tanpa_interaksi,Puan Maharani,Sherly Tjoanda,1
+tanpa_interaksi,Bahlil Lahadalia,Prabowo Subianto,1
+tanpa_interaksi,Basuki T. Purnama (Ahok),Gibran Rakabuming,1
+tanpa_interaksi,Amien Rais,Prabowo Subianto,1
+tanpa_interaksi,Amien Rais,Gibran Rakabuming,1
+tanpa_interaksi,Andika Perkasa,Ganjar Pranowo,1
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Muhaimin Iskandar,1
+tanpa_interaksi,Muhaimin Iskandar,Puan Maharani,1
+tanpa_interaksi,Dedi Mulyadi (KDM),Kaesang Pangarep,1
+tanpa_interaksi,Bobby Nasution,Gibran Rakabuming,1
+tanpa_interaksi,Bobby Nasution,Joko Widodo,1
+tanpa_interaksi,Bobby Nasution,Kaesang Pangarep,1
+tanpa_interaksi,Joko Widodo,Kaesang Pangarep,1
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Sherly Tjoanda,1
+tanpa_interaksi,Mahfud MD,Megawati Soekarnoputri,1
+tanpa_interaksi,Ganjar Pranowo,Rizieq Shihab (HRS),1
+tanpa_interaksi,Megawati Soekarnoputri,Puan Maharani,1
+tanpa_interaksi,Mahfud MD,Prabowo Subianto,1
+tanpa_interaksi,Megawati Soekarnoputri,Prabowo Subianto,1
+tanpa_interaksi,Megawati Soekarnoputri,Pramono Anung,1
+tanpa_interaksi,Megawati Soekarnoputri,Susilo B. Yudhoyono (SBY),1
+tanpa_interaksi,Pramono Anung,Susilo B. Yudhoyono (SBY),1
+tanpa_interaksi,Joko Widodo,Rizieq Shihab (HRS),1
+tanpa_interaksi,Kaesang Pangarep,Rizieq Shihab (HRS),1
+tanpa_interaksi,Basuki T. Purnama (Ahok),Joko Widodo,1
+tanpa_interaksi,Dedi Mulyadi (KDM),Teddy Indra Wijaya,1
+tanpa_interaksi,Joko Widodo,Teddy Indra Wijaya,1
+tanpa_interaksi,Joko Widodo,Puan Maharani,1
+tanpa_interaksi,Andi Amran Sulaiman,Susi Pudjiastuti,1
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Gatot Nurmantyo,1
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Roy Suryo,1
+tanpa_interaksi,Agus H. Yudhoyono (AHY),Tifauzia Tyassuma (dr. Tifa),1
+tanpa_interaksi,Amien Rais,Anies Baswedan,1
+tanpa_interaksi,Amien Rais,Gatot Nurmantyo,1
+tanpa_interaksi,Amien Rais,Roy Suryo,1
+tanpa_interaksi,Amien Rais,Tifauzia Tyassuma (dr. Tifa),1
+tanpa_interaksi,Anies Baswedan,Tifauzia Tyassuma (dr. Tifa),1
+tanpa_interaksi,Gatot Nurmantyo,Puan Maharani,1
+tanpa_interaksi,Gatot Nurmantyo,Roy Suryo,1
+tanpa_interaksi,Gatot Nurmantyo,Tifauzia Tyassuma (dr. Tifa),1
+tanpa_interaksi,Puan Maharani,Roy Suryo,1
+tanpa_interaksi,Puan Maharani,Tifauzia Tyassuma (dr. Tifa),1

@@ -1,0 +1,22 @@
+﻿community_id,n_comments,n_authors,n_videos,share_comments_with_tokoh,top1,top2,top3,top4,top5,tokoh_khas (lift)
+C01,261,156,8,0.21455938697318008,Gibran Rakabuming (12%),Joko Widodo (6%),Prabowo Subianto (5%),Anies Baswedan (5%),Agus H. Yudhoyono (AHY) (1%),
+C02,238,140,19,0.5504201680672269,Dedi Mulyadi (KDM) (24%),Anies Baswedan (19%),Prabowo Subianto (9%),Gibran Rakabuming (8%),Basuki T. Purnama (Ahok) (6%),Anies Baswedan (x4.0); Purbaya Yudhi Sadewa (x3.1); Sherly Tjoanda (x2.8)
+C03,146,95,5,0.4246575342465753,Gibran Rakabuming (29%),Dedi Mulyadi (KDM) (10%),Anies Baswedan (7%),Joko Widodo (4%),Prabowo Subianto (3%),Gibran Rakabuming (x2.5)
+C04,141,85,9,0.36879432624113473,Gibran Rakabuming (22%),Joko Widodo (11%),Prabowo Subianto (6%),Anies Baswedan (2%),Dedi Mulyadi (KDM) (2%),Joko Widodo (x2.4); Gibran Rakabuming (x1.9)
+C05,140,66,5,0.34285714285714286,Dedi Mulyadi (KDM) (30%),Prabowo Subianto (4%),Gibran Rakabuming (4%),Joko Widodo (4%),Anies Baswedan (1%),Dedi Mulyadi (KDM) (x1.8)
+C06,148,65,10,0.5405405405405406,Prabowo Subianto (35%),Gibran Rakabuming (14%),Dedi Mulyadi (KDM) (10%),Anies Baswedan (4%),Joko Widodo (3%),Prabowo Subianto (x4.4)
+C07,132,63,8,0.4621212121212121,Dedi Mulyadi (KDM) (33%),Prabowo Subianto (11%),Gibran Rakabuming (10%),Basuki T. Purnama (Ahok) (7%),Anies Baswedan (4%),Basuki T. Purnama (Ahok) (x2.9); Dedi Mulyadi (KDM) (x1.9)
+C08,123,58,7,0.43902439024390244,Gibran Rakabuming (27%),Prabowo Subianto (19%),Dedi Mulyadi (KDM) (8%),Joko Widodo (6%),Agus H. Yudhoyono (AHY) (2%),Prabowo Subianto (x2.3); Gibran Rakabuming (x2.3)
+C09,76,48,3,0.5,Prabowo Subianto (30%),Gibran Rakabuming (14%),Joko Widodo (14%),Dedi Mulyadi (KDM) (13%),Susilo B. Yudhoyono (SBY) (3%),Prabowo Subianto (x3.8); Joko Widodo (x3.3)
+C10,69,46,4,0.14492753623188406,Gibran Rakabuming (9%),Prabowo Subianto (3%),Agus H. Yudhoyono (AHY) (1%),Ganjar Pranowo (1%),Joko Widodo (1%),
+C11,84,44,13,0.5,Anies Baswedan (29%),Dedi Mulyadi (KDM) (23%),Prabowo Subianto (7%),Gibran Rakabuming (4%),Mahfud MD (2%),Anies Baswedan (x5.9)
+C12,50,42,1,0.06,Emha Ainun Nadjib (Cak Nun) (6%),,,,,
+C13,78,41,5,0.24358974358974358,Joko Widodo (19%),Gibran Rakabuming (3%),Kaesang Pangarep (1%),Megawati Soekarnoputri (1%),Prabowo Subianto (1%),Joko Widodo (x4.4)
+C14,86,39,4,0.47674418604651164,Prabowo Subianto (19%),Basuki T. Purnama (Ahok) (16%),Gibran Rakabuming (13%),Pramono Anung (7%),Puan Maharani (5%),Pramono Anung (x11.3); Basuki T. Purnama (Ahok) (x7.0); Prabowo Subianto (x2.3)
+C15,65,36,4,0.4,Anies Baswedan (17%),Dedi Mulyadi (KDM) (15%),Sherly Tjoanda (9%),Gibran Rakabuming (5%),Joko Widodo (3%),Sherly Tjoanda (x8.7); Anies Baswedan (x3.5)
+C16,55,28,4,0.4,Anies Baswedan (29%),Prabowo Subianto (11%),Dedi Mulyadi (KDM) (5%),Puan Maharani (4%),Rizieq Shihab (HRS) (4%),Anies Baswedan (x6.0)
+C17,31,26,1,0.22580645161290322,Emha Ainun Nadjib (Cak Nun) (19%),Prabowo Subianto (6%),,,,Emha Ainun Nadjib (Cak Nun) (x125.8)
+C18,36,22,2,0.4444444444444444,Dedi Mulyadi (KDM) (28%),Mahfud MD (14%),Prabowo Subianto (11%),Basuki T. Purnama (Ahok) (8%),Agus H. Yudhoyono (AHY) (6%),Mahfud MD (x23.1); Dedi Mulyadi (KDM) (x1.6)
+C19,42,20,1,0.38095238095238093,Dedi Mulyadi (KDM) (12%),Gibran Rakabuming (12%),Sherly Tjoanda (12%),Puan Maharani (10%),Agus H. Yudhoyono (AHY) (7%),Sherly Tjoanda (x11.2)
+small,1580,1182,56,0.3620253164556962,Gibran Rakabuming (13%),Dedi Mulyadi (KDM) (13%),Prabowo Subianto (6%),Joko Widodo (5%),Anies Baswedan (5%),Andika Perkasa (x2.3); Kaesang Pangarep (x1.7); Susilo B. Yudhoyono (SBY) (x1.7)
+tanpa_interaksi,3570,3342,56,0.4369747899159664,Dedi Mulyadi (KDM) (21%),Gibran Rakabuming (11%),Prabowo Subianto (8%),Anies Baswedan (4%),Joko Widodo (4%),Gatot Nurmantyo (x1.8); Bahlil Lahadalia (x1.8); Amien Rais (x1.5)

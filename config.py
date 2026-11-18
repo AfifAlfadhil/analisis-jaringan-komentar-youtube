@@ -85,6 +85,44 @@ COMMUNITY_RESOLUTIONS = [0.5, 0.75, 1.0, 1.5, 2.0]   # nilai yang dicoba pada sw
 COMMUNITY_N_SEEDS = 20                     # jumlah seed untuk uji kestabilan
 COMMUNITY_MIN_SIZE = 20                    # komunitas lebih kecil digabung jadi "small"
 
+# --------------------------------------------------------------------------- #
+# Tahap 6 — Join komentar ke komunitas
+# --------------------------------------------------------------------------- #
+LABEL_SMALL = "small"                       # akun di komunitas < COMMUNITY_MIN_SIZE
+LABEL_NO_INTERACTION = "tanpa_interaksi"    # akun yang tidak masuk graf (tidak pernah membalas/dibalas)
+
+# --------------------------------------------------------------------------- #
+# Tahap 7 — Pemetaan isu (TF-IDF + BERTopic)
+# --------------------------------------------------------------------------- #
+TOPIC_EMBEDDING_MODEL = "paraphrase-multilingual-MiniLM-L12-v2"   # sentence-transformers
+TOPIC_MIN_TOPIC_SIZE = 30        # ukuran minimum topik BERTopic (HDBSCAN min_cluster_size)
+TOPIC_NR_TOPICS = 20             # gabungkan topik mirip sampai maks. 20; None = biarkan BERTopic menentukan; "auto" = otomatis
+TOPIC_TOP_WORDS = 10             # kata kunci per topik / per komunitas
+TOPIC_SEED = 42
+
+# --------------------------------------------------------------------------- #
+# Tahap 8 — Analisis sentimen
+# --------------------------------------------------------------------------- #
+# Model IndoBERT hasil fine-tune SmSA (IndoNLU), 3 kelas. Cek kartu model di Hugging Face.
+# SENTIMENT_MODEL = "hanifnoerr/Fine-tuned-Indonesian-Sentiment-Classifier"
+SENTIMENT_MODEL = "taufiqdp/indonesian-sentiment"
+SENTIMENT_LABEL_MAP = {"LABEL_0": "negatif", "LABEL_1": "netral", "LABEL_2": "positif"}
+# SENTIMENT_MODEL = "mdhugol/indonesia-bert-sentiment-classification"
+# Pemetaan label keluaran model -> positif/netral/negatif. Label bernama (positive, negatif, ...)
+# dikenali otomatis; isi di sini hanya untuk label generik seperti LABEL_0.
+# SENTIMENT_LABEL_MAP = {"LABEL_0": "positif", "LABEL_1": "netral", "LABEL_2": "negatif"}
+SENTIMENT_MAX_LENGTH = 128
+SENTIMENT_BATCH_SIZE = 32
+SENTIMENT_SAMPLE_SIZE = 400      # jumlah komentar untuk dilabeli manual (validasi)
+SENTIMENT_SEED = 42
+SENTIMENT_LABELS = ["positif", "netral", "negatif"]
+
+# --------------------------------------------------------------------------- #
+# Tahap 9 — Perbandingan antar komunitas
+# --------------------------------------------------------------------------- #
+COMPARE_N_PERMUTATIONS = 2000    # uji permutasi label komunitas di dalam video
+COMPARE_SEED = 42
+
 # Biaya kuota YouTube Data API (unit)
 QUOTA_COST_SEARCH = 100
 QUOTA_COST_LIST = 1

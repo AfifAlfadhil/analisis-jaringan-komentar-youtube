@@ -35,6 +35,19 @@ METRIC_ROLES = {
     "pagerank": "Pengaruh berdasarkan arah dan bobot interaksi masuk",
 }
 
+# Kategori peran aktor sesuai BAB II: influencer, broker, initiator
+METRIC_ACTOR_TYPE = {
+    "in_degree": "influencer",
+    "in_strength": "influencer",
+    "pagerank": "influencer",
+    "eigenvector": "influencer",
+    "betweenness": "broker",
+    "out_degree": "initiator",
+    "out_strength": "initiator",
+    "degree": "keterhubungan umum",
+    "closeness": "keterhubungan umum",
+}
+
 
 def lcc_nodes(g: nx.Graph) -> set:
     comps = nx.weakly_connected_components(g) if g.is_directed() else nx.connected_components(g)
@@ -136,6 +149,11 @@ def centrality_table(g: nx.DiGraph) -> pd.DataFrame:
     df["in_degree"] = pd.Series(dict(g.in_degree()))
     df["out_degree"] = pd.Series(dict(g.out_degree()))
     df["degree"] = pd.Series(dict(u.degree()))
+    # versi ternormalisasi C_D(v) = deg(v) / (n - 1), sesuai rumus di BAB II
+    n_minus_1 = max(g.number_of_nodes() - 1, 1)
+    df["degree_centrality"] = df["degree"] / n_minus_1
+    df["in_degree_centrality"] = df["in_degree"] / n_minus_1
+    df["out_degree_centrality"] = df["out_degree"] / n_minus_1
     df["in_strength"] = pd.Series(dict(g.in_degree(weight="weight")))
     df["out_strength"] = pd.Series(dict(g.out_degree(weight="weight")))
     df["betweenness"] = pd.Series(nx.betweenness_centrality(u))
@@ -212,16 +230,45 @@ def bridging_stats(ev: pd.DataFrame, g: nx.DiGraph, br: pd.DataFrame) -> pd.Data
     return pd.DataFrame([{"scope": "bridging", "metric": k, "value": v} for k, v in rows.items()])
 
 
-def top_actors(c: pd.DataFrame, n: int = 10) -> pd.DataFrame:
-    """Top-N akun per metrik, dengan keterangan peran metrik."""
+def top_actors(c: pd.DataFrame, n: int = 10, exclude_owners: bool = False) -> pd.DataFrame:
+    """
+    Top-N akun per metrik, dengan keterangan peran metrik dan kategori aktor
+    (influencer / broker / initiator). exclude_owners=True membuang akun pemilik channel,
+    karena pemilik channel cenderung mendominasi in-degree/out-degree di video mereka sendiri.
+    """
+    if exclude_owners and "is_channel_owner" in c:
+        c = c[~c["is_channel_owner"]]
     rows = []
     for metric, role in METRIC_ROLES.items():
         top = c.nlargest(n, metric)
         for rank, r in enumerate(top.itertuples(index=False), 1):
             rec = r._asdict()
             rows.append({
-                "metric": metric, "rank": rank, "author_id": rec["author_id"],
-                "value": rec[metric], "is_channel_owner": rec.get("is_channel_owner", False),
-                "role": role,
+                "metric": metric, "actor_type": METRIC_ACTOR_TYPE.get(metric, ""), "rank": rank,
+                "author_id": rec["author_id"], "value": rec[metric],
+                "is_channel_owner": rec.get("is_channel_owner", False), "role": role,
             })
     return pd.DataFrame(rows)
+
+
+def actor_roles(c: pd.DataFrame, top_share: float = 0.01) -> pd.DataFrame:
+    """
+    Satu baris per akun yang masuk top-`top_share` (default 1%) pada salah satu kelompok metrik:
+    influencer (in_degree atau pagerank), broker (betweenness), initiator (out_degree).
+    Satu akun bisa memegang lebih dari satu peran.
+    """
+    n = max(1, int(round(len(c) * top_share)))
+    groups = {"influencer": ["in_degree", "pagerank"], "broker": ["betweenness"], "initiator": ["out_degree"]}
+    roles: Dict[str, list] = {}
+    for role, metrics in groups.items():
+        for m in metrics:
+            for a in c.nlargest(n, m)["author_id"]:
+                roles.setdefault(a, [])
+                if role not in roles[a]:
+                    roles[a].append(role)
+    keep = ["author_id", "in_degree", "out_degree", "betweenness", "pagerank", "n_comments", "n_videos"]
+    keep += [k for k in ("is_channel_owner",) if k in c]
+    out = c[c["author_id"].isin(roles)][keep].copy()
+    out["roles"] = out["author_id"].map(lambda a: ", ".join(roles[a]))
+    out["n_roles"] = out["author_id"].map(lambda a: len(roles[a]))
+    return out.sort_values(["n_roles", "in_degree"], ascending=False).reset_index(drop=True)

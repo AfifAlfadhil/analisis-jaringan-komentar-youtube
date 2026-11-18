@@ -1,0 +1,7 @@
+﻿actual,model,pred_positif,pred_netral,pred_negatif
+true_positif,lexicon,76,70,5
+true_netral,lexicon,20,56,4
+true_negatif,lexicon,22,116,31
+true_positif,indobert,75,35,41
+true_netral,indobert,18,24,38
+true_negatif,indobert,31,24,114

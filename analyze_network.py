@@ -11,7 +11,9 @@ Input : outputs/graph/network.graphml
         akun pemilik channel video; identitas asli tidak ditulis ke output)
 Output: outputs/tables/network_stats.csv
         outputs/tables/centrality.csv
-        outputs/tables/top_actors.csv
+        outputs/tables/top_actors.csv          top-10 per metrik + kategori aktor (influencer/broker/initiator)
+        outputs/tables/top_actors_tanpa_pemilik_channel.csv  sama, tanpa akun pemilik channel
+        outputs/tables/actor_roles.csv         akun top-1% per peran (influencer/broker/initiator)
         outputs/tables/degree_distribution.csv
         outputs/tables/bridging_accounts.csv  (akun yang berinteraksi di >1 video)
         outputs/figures/degree_distribution.png
@@ -27,6 +29,7 @@ import pandas as pd
 
 import config
 from src.sna import (
+    actor_roles,
     bridging_accounts,
     bridging_stats,
     centrality_table,
@@ -70,6 +73,8 @@ def main():
     owners = owner_ids()
     cent["is_channel_owner"] = cent["author_id"].isin(owners)
     top = top_actors(cent, n=10)
+    top_no_owner = top_actors(cent, n=10, exclude_owners=True)
+    roles = actor_roles(cent)
     dist = degree_distribution(g)
 
     comments = pd.read_csv(config.PROCESSED_DIR / "comments_clean.csv")
@@ -82,6 +87,8 @@ def main():
     stats.to_csv(config.TABLES_DIR / "network_stats.csv", index=False)
     cent.to_csv(config.TABLES_DIR / "centrality.csv", index=False)
     top.to_csv(config.TABLES_DIR / "top_actors.csv", index=False)
+    top_no_owner.to_csv(config.TABLES_DIR / "top_actors_tanpa_pemilik_channel.csv", index=False)
+    roles.to_csv(config.TABLES_DIR / "actor_roles.csv", index=False)
     dist.to_csv(config.TABLES_DIR / "degree_distribution.csv", index=False)
 
     pl = stats[stats["metric"].str.startswith("powerlaw_")].set_index("metric")["value"]
@@ -98,6 +105,8 @@ def main():
     print(stats[stats["scope"] == "bridging"][["metric", "value"]].to_string(index=False))
     print(bridge.head(5)[["author_id", "n_videos_interaction", "degree", "betweenness",
                           "is_channel_owner"]].to_string(index=False))
+    print("\nPeran aktor (top-1% per kelompok metrik):")
+    print(roles["roles"].value_counts().to_string())
     print("\nTop-5 degree:")
     print(cent.head(5)[["author_id", "degree", "in_degree", "out_degree", "betweenness", "pagerank",
                         "n_comments", "n_videos", "is_channel_owner"]].to_string(index=False))

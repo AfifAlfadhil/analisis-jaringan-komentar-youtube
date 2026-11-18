@@ -9,3 +9,7 @@ scipy>=1.11
 matplotlib>=3.8
 igraph>=0.11
 scikit-learn>=1.3
+
+# Dashboard (dashboard.py)
+streamlit>=1.30
+plotly>=5.18

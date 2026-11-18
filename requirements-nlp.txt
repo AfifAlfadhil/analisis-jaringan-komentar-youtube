@@ -1,0 +1,12 @@
+# Pustaka tambahan untuk Tahap 7 (BERTopic) dan Tahap 8 (IndoBERT).
+# Pasang SETELAH requirements.txt:
+#     pip install -r requirements-nlp.txt
+# Ukurannya besar (torch ~200 MB untuk CPU). Tanpa GPU tetap jalan, hanya lebih lambat.
+# Bila torch gagal terpasang di Windows, pakai versi CPU:
+#     pip install torch --index-url https://download.pytorch.org/whl/cpu
+bertopic>=0.16
+sentence-transformers>=2.2
+transformers>=4.36
+torch>=2.1
+# Opsional: koherensi topik c_v. Lewati bila gagal terpasang (mis. di Python 3.13).
+gensim>=4.3
