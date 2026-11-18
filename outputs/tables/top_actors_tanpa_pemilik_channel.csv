@@ -1,0 +1,91 @@
+metric,actor_type,rank,author_id,value,is_channel_owner,role
+in_degree,influencer,1,user_0265,84.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,2,user_0276,61.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,3,user_1002,25.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,4,user_1011,24.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,5,user_4295,23.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,6,user_2782,22.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,7,user_0994,18.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,8,user_4003,18.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,9,user_4709,18.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+in_degree,influencer,10,user_4308,18.0,False,Paling banyak dibalas/disebut oleh akun lain (pusat perhatian)
+out_degree,initiator,1,user_2254,21.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,2,user_0345,15.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,3,user_3166,14.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,4,user_5257,13.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,5,user_2546,12.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,6,user_3015,11.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,7,user_3156,10.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,8,user_4757,10.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,9,user_4724,10.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+out_degree,initiator,10,user_1232,10.0,False,Paling banyak membalas/menyebut akun lain (penyulut diskusi)
+degree,keterhubungan umum,1,user_0265,84.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,2,user_0276,61.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,3,user_1002,25.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,4,user_1011,24.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,5,user_4295,23.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,6,user_2254,22.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,7,user_2782,22.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,8,user_0345,19.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,9,user_0994,18.0,False,Paling banyak terhubung (total interaksi unik)
+degree,keterhubungan umum,10,user_4003,18.0,False,Paling banyak terhubung (total interaksi unik)
+in_strength,influencer,1,user_0265,122.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,2,user_0276,75.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,3,user_4709,30.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,4,user_1002,29.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,5,user_1011,27.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,6,user_4308,27.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,7,user_4295,25.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,8,user_2782,25.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,9,user_4003,23.0,False,Total balasan/mention yang diterima (bobot)
+in_strength,influencer,10,user_4732,22.0,False,Total balasan/mention yang diterima (bobot)
+out_strength,initiator,1,user_2254,25.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,2,user_3156,25.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,3,user_2546,20.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,4,user_3166,19.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,5,user_5257,19.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,6,user_0360,18.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,7,user_0345,17.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,8,user_4430,16.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,9,user_3015,14.0,False,Total balasan/mention yang dikirim (bobot)
+out_strength,initiator,10,user_0965,14.0,False,Total balasan/mention yang dikirim (bobot)
+betweenness,broker,1,user_4709,0.099751755501458,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,2,user_4813,0.09006331032823314,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,3,user_2640,0.08609666110919463,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,4,user_0347,0.059047951065740234,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,5,user_0265,0.04953768934579018,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,6,user_5032,0.0487112389964146,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,7,user_4732,0.03689304599042581,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,8,user_0276,0.034153683860773096,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,9,user_1408,0.03181849859219806,False,Penghubung/jembatan antar-kelompok diskusi
+betweenness,broker,10,user_4801,0.028015488292224208,False,Penghubung/jembatan antar-kelompok diskusi
+closeness,keterhubungan umum,1,user_4813,0.18493819128171762,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,2,user_4709,0.18475788105297367,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,3,user_2640,0.17679987560255014,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,4,user_5257,0.17543588952322173,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,5,user_4732,0.17026055705300988,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,6,user_4726,0.16822015090989792,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,7,user_5032,0.16789722386296516,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,8,user_4827,0.16723047506986322,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,9,user_4367,0.16571928290336685,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+closeness,keterhubungan umum,10,user_4736,0.16564685314685315,False,Paling dekat dengan seluruh akun dalam LCC (jangkauan cepat)
+eigenvector,influencer,1,user_3156,0.43948440857768223,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,2,user_3110,0.19873958954375073,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,3,user_2599,0.18341331473802736,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,4,user_2341,0.17318855769413663,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,5,user_3120,0.13465707706803606,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,6,user_3129,0.10368768667445907,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,7,user_2254,0.09880149829165352,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,8,user_3197,0.09288660097386899,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,9,user_2460,0.0889359736994082,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+eigenvector,influencer,10,user_3182,0.0874990223364183,False,Berpengaruh karena terhubung ke akun-akun penting (LCC)
+pagerank,influencer,1,user_1011,0.015010889512278334,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,2,user_0265,0.013625868153338154,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,3,user_1119,0.01333576721566747,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,4,user_0276,0.010137542773231015,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,5,user_4295,0.009299720069254789,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,6,user_2815,0.007287672229154015,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,7,user_5009,0.006882254023315165,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,8,user_1331,0.00604223007308874,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,9,user_4710,0.0058650837261160155,False,Pengaruh berdasarkan arah dan bobot interaksi masuk
+pagerank,influencer,10,user_1362,0.005429895782961838,False,Pengaruh berdasarkan arah dan bobot interaksi masuk

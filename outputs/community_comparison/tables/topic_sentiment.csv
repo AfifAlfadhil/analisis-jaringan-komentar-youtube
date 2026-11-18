@@ -1,0 +1,296 @@
+﻿scope,community_id,topic_label,n_comments,share_positif,share_netral,share_negatif,net_sentiment
+semua,,allah_alloh_swt,231,0.5367965367965368,0.13852813852813853,0.3246753246753247,0.21212121212121215
+semua,,gibran_gibran kdm_kdm gibran,204,0.24019607843137256,0.3480392156862745,0.4117647058823529,-0.17156862745098037
+semua,,ijazah_sma_syarat,75,0.06666666666666667,0.21333333333333335,0.72,-0.6533333333333333
+semua,,indonesia_rakyat indonesia_rakyat,408,0.36519607843137253,0.1642156862745098,0.47058823529411764,-0.10539215686274511
+semua,,indonesia_sma_rakyat,50,0.42,0.04,0.54,-0.12000000000000005
+semua,,jokowi_keluarga_pki,53,0.2830188679245283,0.05660377358490566,0.660377358490566,-0.3773584905660377
+semua,,kdm_gibran_mantap,144,0.4583333333333333,0.2916666666666667,0.25,0.20833333333333331
+semua,,kdm_ri_ahok,648,0.21141975308641975,0.3287037037037037,0.45987654320987653,-0.24845679012345678
+semua,,koruptor_korupsi_negara,119,0.10084033613445378,0.025210084033613446,0.8739495798319328,-0.773109243697479
+semua,,menang_curang_pasti,44,0.3181818181818182,0.11363636363636363,0.5681818181818182,-0.25000000000000006
+semua,,no no_no_sama no,40,0.0,0.75,0.25,-0.25
+semua,,outlier (tidak masuk topik),1637,0.23640806353084912,0.17593158216249236,0.5876603543066585,-0.35125229077580944
+semua,,partai_rakyat_presiden,530,0.17358490566037735,0.17358490566037735,0.6528301886792452,-0.47924528301886793
+semua,,pdi_pdip_persen,46,0.17391304347826086,0.2391304347826087,0.5869565217391305,-0.4130434782608696
+semua,,pilih_memang_kdm,719,0.20723226703755215,0.14186369958275383,0.650904033379694,-0.4436717663421419
+semua,,prabowo_pilih prabowo_pramono,90,0.25555555555555554,0.2222222222222222,0.5222222222222223,-0.2666666666666667
+semua,,presiden_tahun_kdm,268,0.2537313432835821,0.39552238805970147,0.35074626865671643,-0.09701492537313433
+semua,,sama_presiden_kalah,572,0.6083916083916084,0.14335664335664336,0.24825174825174826,0.3601398601398602
+semua,,survey_gembul_lembaga,56,0.07142857142857142,0.23214285714285715,0.6964285714285714,-0.625
+semua,,uang_duit_mbg,47,0.10638297872340426,0.10638297872340426,0.7872340425531915,-0.6808510638297872
+per_komunitas,C01,allah_alloh_swt,8,0.25,0.125,0.625,-0.375
+per_komunitas,C01,gibran_gibran kdm_kdm gibran,1,0.0,0.0,1.0,-1.0
+per_komunitas,C01,ijazah_sma_syarat,4,0.0,0.5,0.5,-0.5
+per_komunitas,C01,indonesia_rakyat indonesia_rakyat,10,0.1,0.0,0.9,-0.8
+per_komunitas,C01,indonesia_sma_rakyat,2,0.0,0.0,1.0,-1.0
+per_komunitas,C01,jokowi_keluarga_pki,3,0.0,0.0,1.0,-1.0
+per_komunitas,C01,kdm_gibran_mantap,1,0.0,0.0,1.0,-1.0
+per_komunitas,C01,kdm_ri_ahok,21,0.0,0.23809523809523808,0.7619047619047619,-0.7619047619047619
+per_komunitas,C01,koruptor_korupsi_negara,3,0.0,0.0,1.0,-1.0
+per_komunitas,C01,menang_curang_pasti,2,0.0,0.0,1.0,-1.0
+per_komunitas,C01,outlier (tidak masuk topik),62,0.11290322580645161,0.11290322580645161,0.7741935483870968,-0.6612903225806451
+per_komunitas,C01,partai_rakyat_presiden,11,0.09090909090909091,0.18181818181818182,0.7272727272727273,-0.6363636363636364
+per_komunitas,C01,pilih_memang_kdm,29,0.10344827586206896,0.034482758620689655,0.8620689655172413,-0.7586206896551724
+per_komunitas,C01,prabowo_pilih prabowo_pramono,4,0.0,0.0,1.0,-1.0
+per_komunitas,C01,presiden_tahun_kdm,9,0.0,0.3333333333333333,0.6666666666666666,-0.6666666666666666
+per_komunitas,C01,sama_presiden_kalah,26,0.6153846153846154,0.0,0.38461538461538464,0.23076923076923078
+per_komunitas,C01,survey_gembul_lembaga,1,0.0,1.0,0.0,0.0
+per_komunitas,C02,allah_alloh_swt,10,0.4,0.3,0.3,0.10000000000000003
+per_komunitas,C02,gibran_gibran kdm_kdm gibran,3,0.0,0.6666666666666666,0.3333333333333333,-0.3333333333333333
+per_komunitas,C02,ijazah_sma_syarat,3,0.0,0.3333333333333333,0.6666666666666666,-0.6666666666666666
+per_komunitas,C02,indonesia_rakyat indonesia_rakyat,10,0.5,0.1,0.4,0.09999999999999998
+per_komunitas,C02,indonesia_sma_rakyat,3,0.3333333333333333,0.0,0.6666666666666666,-0.3333333333333333
+per_komunitas,C02,jokowi_keluarga_pki,1,0.0,0.0,1.0,-1.0
+per_komunitas,C02,kdm_gibran_mantap,4,0.0,0.75,0.25,-0.25
+per_komunitas,C02,kdm_ri_ahok,32,0.3125,0.40625,0.28125,0.03125
+per_komunitas,C02,koruptor_korupsi_negara,2,0.0,0.0,1.0,-1.0
+per_komunitas,C02,menang_curang_pasti,1,0.0,0.0,1.0,-1.0
+per_komunitas,C02,outlier (tidak masuk topik),49,0.24489795918367346,0.16326530612244897,0.5918367346938775,-0.3469387755102041
+per_komunitas,C02,partai_rakyat_presiden,17,0.17647058823529413,0.17647058823529413,0.6470588235294118,-0.47058823529411764
+per_komunitas,C02,pdi_pdip_persen,1,0.0,1.0,0.0,0.0
+per_komunitas,C02,pilih_memang_kdm,31,0.25806451612903225,0.12903225806451613,0.6129032258064516,-0.3548387096774194
+per_komunitas,C02,prabowo_pilih prabowo_pramono,2,0.0,0.0,1.0,-1.0
+per_komunitas,C02,presiden_tahun_kdm,13,0.3076923076923077,0.5384615384615384,0.15384615384615385,0.15384615384615385
+per_komunitas,C02,sama_presiden_kalah,20,0.6,0.3,0.1,0.5
+per_komunitas,C03,allah_alloh_swt,8,0.5,0.125,0.375,0.125
+per_komunitas,C03,gibran_gibran kdm_kdm gibran,6,0.5,0.16666666666666666,0.3333333333333333,0.16666666666666669
+per_komunitas,C03,ijazah_sma_syarat,1,0.0,1.0,0.0,0.0
+per_komunitas,C03,indonesia_rakyat indonesia_rakyat,6,0.3333333333333333,0.16666666666666666,0.5,-0.16666666666666669
+per_komunitas,C03,indonesia_sma_rakyat,1,0.0,0.0,1.0,-1.0
+per_komunitas,C03,jokowi_keluarga_pki,1,0.0,0.0,1.0,-1.0
+per_komunitas,C03,kdm_gibran_mantap,7,0.5714285714285714,0.42857142857142855,0.0,0.5714285714285714
+per_komunitas,C03,kdm_ri_ahok,8,0.375,0.25,0.375,0.0
+per_komunitas,C03,koruptor_korupsi_negara,5,0.2,0.0,0.8,-0.6000000000000001
+per_komunitas,C03,outlier (tidak masuk topik),30,0.3333333333333333,0.13333333333333333,0.5333333333333333,-0.2
+per_komunitas,C03,partai_rakyat_presiden,4,0.0,0.0,1.0,-1.0
+per_komunitas,C03,pilih_memang_kdm,8,0.25,0.0,0.75,-0.5
+per_komunitas,C03,prabowo_pilih prabowo_pramono,2,0.0,0.0,1.0,-1.0
+per_komunitas,C03,presiden_tahun_kdm,1,0.0,0.0,1.0,-1.0
+per_komunitas,C03,sama_presiden_kalah,24,0.5,0.08333333333333333,0.4166666666666667,0.08333333333333331
+per_komunitas,C03,uang_duit_mbg,2,0.0,0.0,1.0,-1.0
+per_komunitas,C04,allah_alloh_swt,5,0.2,0.2,0.6,-0.39999999999999997
+per_komunitas,C04,gibran_gibran kdm_kdm gibran,6,0.6666666666666666,0.16666666666666666,0.16666666666666666,0.5
+per_komunitas,C04,ijazah_sma_syarat,2,0.0,0.0,1.0,-1.0
+per_komunitas,C04,indonesia_rakyat indonesia_rakyat,5,0.2,0.0,0.8,-0.6000000000000001
+per_komunitas,C04,indonesia_sma_rakyat,1,1.0,0.0,0.0,1.0
+per_komunitas,C04,jokowi_keluarga_pki,2,0.5,0.0,0.5,0.0
+per_komunitas,C04,kdm_gibran_mantap,3,1.0,0.0,0.0,1.0
+per_komunitas,C04,kdm_ri_ahok,3,0.0,0.3333333333333333,0.6666666666666666,-0.6666666666666666
+per_komunitas,C04,koruptor_korupsi_negara,2,0.0,0.0,1.0,-1.0
+per_komunitas,C04,menang_curang_pasti,3,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.0
+per_komunitas,C04,outlier (tidak masuk topik),30,0.13333333333333333,0.03333333333333333,0.8333333333333334,-0.7000000000000001
+per_komunitas,C04,partai_rakyat_presiden,7,0.2857142857142857,0.0,0.7142857142857143,-0.4285714285714286
+per_komunitas,C04,pilih_memang_kdm,18,0.16666666666666666,0.16666666666666666,0.6666666666666666,-0.5
+per_komunitas,C04,prabowo_pilih prabowo_pramono,1,0.0,0.0,1.0,-1.0
+per_komunitas,C04,presiden_tahun_kdm,2,0.0,1.0,0.0,0.0
+per_komunitas,C04,sama_presiden_kalah,24,0.625,0.08333333333333333,0.2916666666666667,0.3333333333333333
+per_komunitas,C04,survey_gembul_lembaga,9,0.1111111111111111,0.3333333333333333,0.5555555555555556,-0.4444444444444445
+per_komunitas,C04,uang_duit_mbg,2,0.0,0.0,1.0,-1.0
+per_komunitas,C05,allah_alloh_swt,1,0.0,0.0,1.0,-1.0
+per_komunitas,C05,gibran_gibran kdm_kdm gibran,3,0.0,0.6666666666666666,0.3333333333333333,-0.3333333333333333
+per_komunitas,C05,indonesia_rakyat indonesia_rakyat,9,0.8888888888888888,0.0,0.1111111111111111,0.7777777777777777
+per_komunitas,C05,indonesia_sma_rakyat,1,0.0,0.0,1.0,-1.0
+per_komunitas,C05,jokowi_keluarga_pki,4,0.0,0.0,1.0,-1.0
+per_komunitas,C05,kdm_gibran_mantap,19,0.7368421052631579,0.0,0.2631578947368421,0.47368421052631576
+per_komunitas,C05,kdm_ri_ahok,12,0.08333333333333333,0.25,0.6666666666666666,-0.5833333333333333
+per_komunitas,C05,outlier (tidak masuk topik),22,0.18181818181818182,0.18181818181818182,0.6363636363636364,-0.45454545454545453
+per_komunitas,C05,partai_rakyat_presiden,5,0.2,0.4,0.4,-0.2
+per_komunitas,C05,pilih_memang_kdm,10,0.5,0.1,0.4,0.09999999999999998
+per_komunitas,C05,presiden_tahun_kdm,1,1.0,0.0,0.0,1.0
+per_komunitas,C05,sama_presiden_kalah,8,0.875,0.0,0.125,0.75
+per_komunitas,C06,gibran_gibran kdm_kdm gibran,5,0.2,0.4,0.4,-0.2
+per_komunitas,C06,indonesia_rakyat indonesia_rakyat,3,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.0
+per_komunitas,C06,jokowi_keluarga_pki,1,0.0,0.0,1.0,-1.0
+per_komunitas,C06,kdm_ri_ahok,12,0.08333333333333333,0.3333333333333333,0.5833333333333334,-0.5
+per_komunitas,C06,koruptor_korupsi_negara,1,0.0,0.0,1.0,-1.0
+per_komunitas,C06,outlier (tidak masuk topik),42,0.21428571428571427,0.11904761904761904,0.6666666666666666,-0.45238095238095233
+per_komunitas,C06,partai_rakyat_presiden,13,0.0,0.38461538461538464,0.6153846153846154,-0.6153846153846154
+per_komunitas,C06,pilih_memang_kdm,20,0.1,0.2,0.7,-0.6
+per_komunitas,C06,prabowo_pilih prabowo_pramono,12,0.3333333333333333,0.16666666666666666,0.5,-0.16666666666666669
+per_komunitas,C06,presiden_tahun_kdm,8,0.375,0.375,0.25,0.125
+per_komunitas,C06,sama_presiden_kalah,18,0.7222222222222222,0.05555555555555555,0.2222222222222222,0.5
+per_komunitas,C06,survey_gembul_lembaga,1,0.0,0.0,1.0,-1.0
+per_komunitas,C07,allah_alloh_swt,1,1.0,0.0,0.0,1.0
+per_komunitas,C07,gibran_gibran kdm_kdm gibran,4,0.25,0.75,0.0,0.25
+per_komunitas,C07,ijazah_sma_syarat,2,0.0,0.0,1.0,-1.0
+per_komunitas,C07,indonesia_rakyat indonesia_rakyat,11,0.2727272727272727,0.2727272727272727,0.45454545454545453,-0.18181818181818182
+per_komunitas,C07,kdm_ri_ahok,23,0.17391304347826086,0.34782608695652173,0.4782608695652174,-0.30434782608695654
+per_komunitas,C07,koruptor_korupsi_negara,7,0.14285714285714285,0.0,0.8571428571428571,-0.7142857142857142
+per_komunitas,C07,outlier (tidak masuk topik),25,0.16,0.12,0.72,-0.5599999999999999
+per_komunitas,C07,partai_rakyat_presiden,9,0.2222222222222222,0.3333333333333333,0.4444444444444444,-0.2222222222222222
+per_komunitas,C07,pilih_memang_kdm,13,0.3076923076923077,0.07692307692307693,0.6153846153846154,-0.3076923076923077
+per_komunitas,C07,prabowo_pilih prabowo_pramono,2,0.5,0.0,0.5,0.0
+per_komunitas,C07,presiden_tahun_kdm,2,0.0,0.5,0.5,-0.5
+per_komunitas,C07,sama_presiden_kalah,11,0.5454545454545454,0.18181818181818182,0.2727272727272727,0.2727272727272727
+per_komunitas,C07,uang_duit_mbg,1,1.0,0.0,0.0,1.0
+per_komunitas,C08,allah_alloh_swt,4,0.75,0.25,0.0,0.75
+per_komunitas,C08,gibran_gibran kdm_kdm gibran,14,0.14285714285714285,0.14285714285714285,0.7142857142857143,-0.5714285714285714
+per_komunitas,C08,ijazah_sma_syarat,3,0.0,0.6666666666666666,0.3333333333333333,-0.3333333333333333
+per_komunitas,C08,indonesia_rakyat indonesia_rakyat,6,0.16666666666666666,0.0,0.8333333333333334,-0.6666666666666667
+per_komunitas,C08,jokowi_keluarga_pki,1,0.0,0.0,1.0,-1.0
+per_komunitas,C08,kdm_ri_ahok,4,0.25,0.25,0.5,-0.25
+per_komunitas,C08,koruptor_korupsi_negara,1,0.0,0.0,1.0,-1.0
+per_komunitas,C08,menang_curang_pasti,1,1.0,0.0,0.0,1.0
+per_komunitas,C08,outlier (tidak masuk topik),23,0.21739130434782608,0.17391304347826086,0.6086956521739131,-0.39130434782608703
+per_komunitas,C08,partai_rakyat_presiden,11,0.18181818181818182,0.2727272727272727,0.5454545454545454,-0.3636363636363636
+per_komunitas,C08,pdi_pdip_persen,1,0.0,1.0,0.0,0.0
+per_komunitas,C08,pilih_memang_kdm,15,0.26666666666666666,0.13333333333333333,0.6,-0.3333333333333333
+per_komunitas,C08,prabowo_pilih prabowo_pramono,5,0.0,0.0,1.0,-1.0
+per_komunitas,C08,presiden_tahun_kdm,4,0.75,0.25,0.0,0.75
+per_komunitas,C08,sama_presiden_kalah,14,0.6428571428571429,0.14285714285714285,0.21428571428571427,0.4285714285714286
+per_komunitas,C08,survey_gembul_lembaga,2,0.5,0.0,0.5,0.0
+per_komunitas,C08,uang_duit_mbg,1,0.0,0.0,1.0,-1.0
+per_komunitas,C09,gibran_gibran kdm_kdm gibran,2,0.0,0.5,0.5,-0.5
+per_komunitas,C09,indonesia_rakyat indonesia_rakyat,2,0.5,0.0,0.5,0.0
+per_komunitas,C09,jokowi_keluarga_pki,2,1.0,0.0,0.0,1.0
+per_komunitas,C09,kdm_ri_ahok,3,0.3333333333333333,0.6666666666666666,0.0,0.3333333333333333
+per_komunitas,C09,koruptor_korupsi_negara,1,0.0,0.0,1.0,-1.0
+per_komunitas,C09,menang_curang_pasti,2,0.5,0.5,0.0,0.5
+per_komunitas,C09,outlier (tidak masuk topik),21,0.14285714285714285,0.23809523809523808,0.6190476190476191,-0.4761904761904762
+per_komunitas,C09,partai_rakyat_presiden,10,0.2,0.1,0.7,-0.49999999999999994
+per_komunitas,C09,pilih_memang_kdm,7,0.2857142857142857,0.0,0.7142857142857143,-0.4285714285714286
+per_komunitas,C09,prabowo_pilih prabowo_pramono,3,0.0,0.6666666666666666,0.3333333333333333,-0.3333333333333333
+per_komunitas,C09,presiden_tahun_kdm,2,0.0,0.5,0.5,-0.5
+per_komunitas,C09,sama_presiden_kalah,12,0.75,0.0,0.25,0.5
+per_komunitas,C09,survey_gembul_lembaga,1,1.0,0.0,0.0,1.0
+per_komunitas,C10,ijazah_sma_syarat,3,0.3333333333333333,0.0,0.6666666666666666,-0.3333333333333333
+per_komunitas,C10,indonesia_sma_rakyat,3,1.0,0.0,0.0,1.0
+per_komunitas,C10,kdm_gibran_mantap,2,0.0,0.0,1.0,-1.0
+per_komunitas,C10,kdm_ri_ahok,1,0.0,1.0,0.0,0.0
+per_komunitas,C10,koruptor_korupsi_negara,3,0.0,0.0,1.0,-1.0
+per_komunitas,C10,no no_no_sama no,3,0.0,1.0,0.0,0.0
+per_komunitas,C10,outlier (tidak masuk topik),15,0.3333333333333333,0.13333333333333333,0.5333333333333333,-0.2
+per_komunitas,C10,partai_rakyat_presiden,1,1.0,0.0,0.0,1.0
+per_komunitas,C10,pilih_memang_kdm,5,0.2,0.0,0.8,-0.6000000000000001
+per_komunitas,C10,presiden_tahun_kdm,1,0.0,0.0,1.0,-1.0
+per_komunitas,C10,sama_presiden_kalah,7,0.7142857142857143,0.14285714285714285,0.14285714285714285,0.5714285714285714
+per_komunitas,C11,allah_alloh_swt,2,0.5,0.5,0.0,0.5
+per_komunitas,C11,indonesia_rakyat indonesia_rakyat,7,0.14285714285714285,0.42857142857142855,0.42857142857142855,-0.2857142857142857
+per_komunitas,C11,indonesia_sma_rakyat,1,1.0,0.0,0.0,1.0
+per_komunitas,C11,kdm_ri_ahok,8,0.25,0.25,0.5,-0.25
+per_komunitas,C11,koruptor_korupsi_negara,2,0.0,0.0,1.0,-1.0
+per_komunitas,C11,outlier (tidak masuk topik),23,0.17391304347826086,0.391304347826087,0.43478260869565216,-0.2608695652173913
+per_komunitas,C11,partai_rakyat_presiden,8,0.0,0.0,1.0,-1.0
+per_komunitas,C11,pilih_memang_kdm,3,0.0,0.0,1.0,-1.0
+per_komunitas,C11,presiden_tahun_kdm,3,0.0,1.0,0.0,0.0
+per_komunitas,C11,sama_presiden_kalah,8,0.75,0.0,0.25,0.5
+per_komunitas,C11,uang_duit_mbg,1,0.0,0.0,1.0,-1.0
+per_komunitas,C12,allah_alloh_swt,22,0.6363636363636364,0.09090909090909091,0.2727272727272727,0.36363636363636365
+per_komunitas,C12,indonesia_rakyat indonesia_rakyat,3,0.3333333333333333,0.3333333333333333,0.3333333333333333,0.0
+per_komunitas,C12,kdm_ri_ahok,2,0.0,0.5,0.5,-0.5
+per_komunitas,C12,outlier (tidak masuk topik),2,0.0,0.5,0.5,-0.5
+per_komunitas,C12,pilih_memang_kdm,5,0.2,0.0,0.8,-0.6000000000000001
+per_komunitas,C12,sama_presiden_kalah,2,1.0,0.0,0.0,1.0
+per_komunitas,C13,allah_alloh_swt,1,0.0,0.0,1.0,-1.0
+per_komunitas,C13,ijazah_sma_syarat,2,0.0,0.0,1.0,-1.0
+per_komunitas,C13,indonesia_rakyat indonesia_rakyat,1,1.0,0.0,0.0,1.0
+per_komunitas,C13,indonesia_sma_rakyat,2,0.5,0.0,0.5,0.0
+per_komunitas,C13,jokowi_keluarga_pki,2,0.5,0.0,0.5,0.0
+per_komunitas,C13,kdm_gibran_mantap,1,0.0,1.0,0.0,0.0
+per_komunitas,C13,kdm_ri_ahok,4,0.0,0.25,0.75,-0.75
+per_komunitas,C13,koruptor_korupsi_negara,1,0.0,0.0,1.0,-1.0
+per_komunitas,C13,menang_curang_pasti,1,1.0,0.0,0.0,1.0
+per_komunitas,C13,outlier (tidak masuk topik),25,0.16,0.04,0.8,-0.64
+per_komunitas,C13,partai_rakyat_presiden,4,0.25,0.0,0.75,-0.5
+per_komunitas,C13,pdi_pdip_persen,6,0.16666666666666666,0.3333333333333333,0.5,-0.33333333333333337
+per_komunitas,C13,pilih_memang_kdm,7,0.0,0.14285714285714285,0.8571428571428571,-0.8571428571428571
+per_komunitas,C13,presiden_tahun_kdm,2,0.5,0.0,0.5,0.0
+per_komunitas,C13,sama_presiden_kalah,7,0.7142857142857143,0.14285714285714285,0.14285714285714285,0.5714285714285714
+per_komunitas,C13,uang_duit_mbg,1,0.0,1.0,0.0,0.0
+per_komunitas,C14,gibran_gibran kdm_kdm gibran,4,0.0,0.75,0.25,-0.25
+per_komunitas,C14,indonesia_rakyat indonesia_rakyat,3,0.6666666666666666,0.0,0.3333333333333333,0.3333333333333333
+per_komunitas,C14,indonesia_sma_rakyat,1,0.0,0.0,1.0,-1.0
+per_komunitas,C14,jokowi_keluarga_pki,1,0.0,0.0,1.0,-1.0
+per_komunitas,C14,kdm_gibran_mantap,1,0.0,1.0,0.0,0.0
+per_komunitas,C14,kdm_ri_ahok,7,0.0,0.7142857142857143,0.2857142857142857,-0.2857142857142857
+per_komunitas,C14,koruptor_korupsi_negara,1,0.0,0.0,1.0,-1.0
+per_komunitas,C14,outlier (tidak masuk topik),19,0.15789473684210525,0.21052631578947367,0.631578947368421,-0.47368421052631576
+per_komunitas,C14,partai_rakyat_presiden,12,0.0,0.08333333333333333,0.9166666666666666,-0.9166666666666666
+per_komunitas,C14,pdi_pdip_persen,2,0.0,0.0,1.0,-1.0
+per_komunitas,C14,pilih_memang_kdm,10,0.0,0.3,0.7,-0.7
+per_komunitas,C14,prabowo_pilih prabowo_pramono,8,0.25,0.25,0.5,-0.25
+per_komunitas,C14,presiden_tahun_kdm,3,0.0,0.0,1.0,-1.0
+per_komunitas,C14,sama_presiden_kalah,7,0.2857142857142857,0.14285714285714285,0.5714285714285714,-0.2857142857142857
+per_komunitas,C15,allah_alloh_swt,2,0.5,0.0,0.5,0.0
+per_komunitas,C15,ijazah_sma_syarat,2,0.0,1.0,0.0,0.0
+per_komunitas,C15,indonesia_rakyat indonesia_rakyat,6,0.0,0.16666666666666666,0.8333333333333334,-0.8333333333333334
+per_komunitas,C15,kdm_ri_ahok,8,0.5,0.375,0.125,0.375
+per_komunitas,C15,koruptor_korupsi_negara,1,0.0,0.0,1.0,-1.0
+per_komunitas,C15,outlier (tidak masuk topik),13,0.15384615384615385,0.23076923076923078,0.6153846153846154,-0.46153846153846156
+per_komunitas,C15,partai_rakyat_presiden,5,0.4,0.2,0.4,0.0
+per_komunitas,C15,pilih_memang_kdm,5,0.4,0.2,0.4,0.0
+per_komunitas,C15,sama_presiden_kalah,4,0.25,0.5,0.25,0.0
+per_komunitas,C16,allah_alloh_swt,2,0.0,0.0,1.0,-1.0
+per_komunitas,C16,indonesia_rakyat indonesia_rakyat,1,0.0,1.0,0.0,0.0
+per_komunitas,C16,indonesia_sma_rakyat,1,0.0,0.0,1.0,-1.0
+per_komunitas,C16,kdm_gibran_mantap,1,1.0,0.0,0.0,1.0
+per_komunitas,C16,kdm_ri_ahok,5,0.2,0.4,0.4,-0.2
+per_komunitas,C16,menang_curang_pasti,2,0.0,0.0,1.0,-1.0
+per_komunitas,C16,outlier (tidak masuk topik),16,0.25,0.125,0.625,-0.375
+per_komunitas,C16,partai_rakyat_presiden,4,0.25,0.0,0.75,-0.5
+per_komunitas,C16,pilih_memang_kdm,5,0.0,0.0,1.0,-1.0
+per_komunitas,C16,presiden_tahun_kdm,2,0.0,1.0,0.0,0.0
+per_komunitas,C16,sama_presiden_kalah,8,0.25,0.375,0.375,-0.125
+per_komunitas,C17,allah_alloh_swt,3,0.3333333333333333,0.0,0.6666666666666666,-0.3333333333333333
+per_komunitas,C17,indonesia_rakyat indonesia_rakyat,4,0.25,0.25,0.5,-0.25
+per_komunitas,C17,koruptor_korupsi_negara,1,0.0,0.0,1.0,-1.0
+per_komunitas,C17,outlier (tidak masuk topik),2,0.5,0.0,0.5,0.0
+per_komunitas,C17,pilih_memang_kdm,7,0.2857142857142857,0.14285714285714285,0.5714285714285714,-0.2857142857142857
+per_komunitas,C17,presiden_tahun_kdm,1,0.0,0.0,1.0,-1.0
+per_komunitas,C17,sama_presiden_kalah,7,0.42857142857142855,0.14285714285714285,0.42857142857142855,0.0
+per_komunitas,C18,allah_alloh_swt,2,1.0,0.0,0.0,1.0
+per_komunitas,C18,indonesia_rakyat indonesia_rakyat,2,1.0,0.0,0.0,1.0
+per_komunitas,C18,kdm_ri_ahok,6,0.0,0.6666666666666666,0.3333333333333333,-0.3333333333333333
+per_komunitas,C18,outlier (tidak masuk topik),8,0.125,0.25,0.625,-0.5
+per_komunitas,C18,partai_rakyat_presiden,3,0.6666666666666666,0.3333333333333333,0.0,0.6666666666666666
+per_komunitas,C18,pilih_memang_kdm,2,0.5,0.0,0.5,0.0
+per_komunitas,C18,presiden_tahun_kdm,3,0.0,1.0,0.0,0.0
+per_komunitas,C18,sama_presiden_kalah,2,1.0,0.0,0.0,1.0
+per_komunitas,C19,kdm_ri_ahok,3,0.0,0.6666666666666666,0.3333333333333333,-0.3333333333333333
+per_komunitas,C19,koruptor_korupsi_negara,2,0.0,0.5,0.5,-0.5
+per_komunitas,C19,outlier (tidak masuk topik),9,0.0,0.6666666666666666,0.3333333333333333,-0.3333333333333333
+per_komunitas,C19,partai_rakyat_presiden,2,0.0,0.0,1.0,-1.0
+per_komunitas,C19,pilih_memang_kdm,6,0.3333333333333333,0.16666666666666666,0.5,-0.16666666666666669
+per_komunitas,C19,prabowo_pilih prabowo_pramono,2,0.5,0.0,0.5,0.0
+per_komunitas,C19,sama_presiden_kalah,1,0.0,1.0,0.0,0.0
+per_komunitas,kecil,allah_alloh_swt,30,0.3333333333333333,0.1,0.5666666666666667,-0.23333333333333334
+per_komunitas,kecil,gibran_gibran kdm_kdm gibran,55,0.2,0.4,0.4,-0.2
+per_komunitas,kecil,ijazah_sma_syarat,23,0.0,0.08695652173913043,0.9130434782608695,-0.9130434782608695
+per_komunitas,kecil,indonesia_rakyat indonesia_rakyat,81,0.32098765432098764,0.2222222222222222,0.4567901234567901,-0.13580246913580246
+per_komunitas,kecil,indonesia_sma_rakyat,7,0.42857142857142855,0.14285714285714285,0.42857142857142855,0.0
+per_komunitas,kecil,jokowi_keluarga_pki,19,0.2631578947368421,0.10526315789473684,0.631578947368421,-0.3684210526315789
+per_komunitas,kecil,kdm_gibran_mantap,15,0.4,0.26666666666666666,0.3333333333333333,0.06666666666666671
+per_komunitas,kecil,kdm_ri_ahok,126,0.1984126984126984,0.3333333333333333,0.46825396825396826,-0.2698412698412699
+per_komunitas,kecil,koruptor_korupsi_negara,26,0.11538461538461539,0.0,0.8846153846153846,-0.7692307692307692
+per_komunitas,kecil,menang_curang_pasti,7,0.42857142857142855,0.0,0.5714285714285714,-0.14285714285714285
+per_komunitas,kecil,no no_no_sama no,27,0.0,0.8148148148148148,0.18518518518518517,-0.18518518518518517
+per_komunitas,kecil,outlier (tidak masuk topik),346,0.1994219653179191,0.1907514450867052,0.6098265895953757,-0.4104046242774566
+per_komunitas,kecil,partai_rakyat_presiden,116,0.1810344827586207,0.1206896551724138,0.6982758620689655,-0.5172413793103449
+per_komunitas,kecil,pdi_pdip_persen,15,0.13333333333333333,0.2,0.6666666666666666,-0.5333333333333333
+per_komunitas,kecil,pilih_memang_kdm,181,0.14917127071823205,0.1270718232044199,0.7237569060773481,-0.5745856353591161
+per_komunitas,kecil,prabowo_pilih prabowo_pramono,8,0.25,0.125,0.625,-0.375
+per_komunitas,kecil,presiden_tahun_kdm,40,0.3,0.35,0.35,-0.04999999999999999
+per_komunitas,kecil,sama_presiden_kalah,159,0.610062893081761,0.16352201257861634,0.22641509433962265,0.38364779874213834
+per_komunitas,kecil,survey_gembul_lembaga,8,0.0,0.25,0.75,-0.75
+per_komunitas,kecil,uang_duit_mbg,19,0.05263157894736842,0.10526315789473684,0.8421052631578947,-0.7894736842105263
+per_komunitas,tanpa_interaksi,allah_alloh_swt,130,0.6153846153846154,0.14615384615384616,0.23846153846153847,0.3769230769230769
+per_komunitas,tanpa_interaksi,gibran_gibran kdm_kdm gibran,101,0.26732673267326734,0.31683168316831684,0.4158415841584158,-0.14851485148514848
+per_komunitas,tanpa_interaksi,ijazah_sma_syarat,30,0.13333333333333333,0.2,0.6666666666666666,-0.5333333333333333
+per_komunitas,tanpa_interaksi,indonesia_rakyat indonesia_rakyat,238,0.3865546218487395,0.15126050420168066,0.46218487394957986,-0.07563025210084034
+per_komunitas,tanpa_interaksi,indonesia_sma_rakyat,27,0.4074074074074074,0.037037037037037035,0.5555555555555556,-0.1481481481481482
+per_komunitas,tanpa_interaksi,jokowi_keluarga_pki,16,0.375,0.0625,0.5625,-0.1875
+per_komunitas,tanpa_interaksi,kdm_gibran_mantap,90,0.4222222222222222,0.3333333333333333,0.24444444444444444,0.17777777777777778
+per_komunitas,tanpa_interaksi,kdm_ri_ahok,360,0.23333333333333334,0.30833333333333335,0.4583333333333333,-0.22499999999999998
+per_komunitas,tanpa_interaksi,koruptor_korupsi_negara,60,0.11666666666666667,0.03333333333333333,0.85,-0.7333333333333333
+per_komunitas,tanpa_interaksi,menang_curang_pasti,25,0.28,0.12,0.6,-0.31999999999999995
+per_komunitas,tanpa_interaksi,no no_no_sama no,10,0.0,0.5,0.5,-0.5
+per_komunitas,tanpa_interaksi,outlier (tidak masuk topik),855,0.2760233918128655,0.17660818713450294,0.5473684210526316,-0.2713450292397661
+per_komunitas,tanpa_interaksi,partai_rakyat_presiden,288,0.17708333333333334,0.19444444444444445,0.6284722222222222,-0.45138888888888884
+per_komunitas,tanpa_interaksi,pdi_pdip_persen,21,0.23809523809523808,0.19047619047619047,0.5714285714285714,-0.3333333333333333
+per_komunitas,tanpa_interaksi,pilih_memang_kdm,332,0.24096385542168675,0.1686746987951807,0.5903614457831325,-0.3493975903614458
+per_komunitas,tanpa_interaksi,prabowo_pilih prabowo_pramono,41,0.3170731707317073,0.3170731707317073,0.36585365853658536,-0.04878048780487804
+per_komunitas,tanpa_interaksi,presiden_tahun_kdm,171,0.2573099415204678,0.38596491228070173,0.3567251461988304,-0.09941520467836257
+per_komunitas,tanpa_interaksi,sama_presiden_kalah,203,0.6108374384236454,0.15270935960591134,0.23645320197044334,0.374384236453202
+per_komunitas,tanpa_interaksi,survey_gembul_lembaga,34,0.029411764705882353,0.20588235294117646,0.7647058823529411,-0.7352941176470588
+per_komunitas,tanpa_interaksi,uang_duit_mbg,20,0.15,0.1,0.75,-0.6

@@ -1,0 +1,5 @@
+﻿test,n,n_groups,chi2,dof,p_value,cramers_v,share_expected_lt5,chi2_perm_mean,n_permutations,n_videos_multi_community,sentiment_source
+(a) antar komunitas utama,2001,19.0,96.08529981531066,36.0,2.2627979286527285e-07,0.15494941204690268,0.0,,,,indobert
+(b) komunitas utama + small + tanpa_interaksi,7151,21.0,106.34590215933372,40.0,6.249660369770551e-08,0.08623071617262659,0.0,,,,indobert
+(c) komunitas vs small vs tanpa_interaksi,7151,3.0,11.962527002764823,4.0,0.01763211041919171,0.028920984899455368,0.0,,,,indobert
+permutasi di dalam video (komunitas utama),2001,,96.08529981531065,,0.8610694652673663,,,102.9213378780066,2000.0,33.0,indobert
