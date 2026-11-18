@@ -1,0 +1,10 @@
+﻿gold,predicted,n,model
+positif,positif,20,lexicon
+netral,positif,10,lexicon
+negatif,positif,16,lexicon
+positif,netral,115,lexicon
+netral,netral,59,lexicon
+negatif,netral,131,lexicon
+positif,negatif,0,lexicon
+netral,negatif,0,lexicon
+negatif,negatif,10,lexicon

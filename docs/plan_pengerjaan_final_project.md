@@ -86,7 +86,7 @@ Catatan desain: akun yang menulis banyak komentar dengan isu dan sentimen beraga
 - Balasan di YouTube hanya satu tingkat di bawah komentar tingkat atas. Balasan yang menyebut `@nama` pengguna lain bisa dipakai sebagai sumber edge tambahan.
 - Catat tanggal pengambilan data (jumlah komentar bisa berubah).
 
-**Output:** `data/raw/videos.csv`, `data/raw/comments.csv` (dibuat oleh `python main.py`)
+**Output:** `data/raw/videos.csv`, `data/raw/comments.csv` (dibuat oleh `python scripts/collect_data.py`)
 
 **Hasil pengambilan (3 Nov 2026):** 36 video unik, 8.518 komentar dan reply (5.494 tingkat atas, 3.024 reply), 6.730 akun unik. Kuota terpakai 678 unit. Batas 300 thread per video tercapai pada 10 video, sisanya diambil lengkap.
 
@@ -95,7 +95,7 @@ Catatan desain: akun yang menulis banyak komentar dengan isu dan sentimen beraga
 **Data jaringan (level akun)**
 - [x] Hapus duplikat komentar
 - [x] Standarkan ID akun (memakai `authorChannelId`; nama tampilan hanya untuk mencocokkan `@mention`)
-- [x] Anonimisasi username untuk laporan dan visualisasi (mis. `user_0001`; pemetaan di `data/processed/author_map.csv`, privat)
+- [x] Anonimisasi username untuk laporan dan visualisasi (mis. `user_0001`; pemetaan di `data/processed/network_analysis/author_map.csv`, privat)
 - [x] Tangani akun terhapus atau tidak bernama
 
 **Data teks (level komentar)**
@@ -106,17 +106,17 @@ Catatan desain: akun yang menulis banyak komentar dengan isu dan sentimen beraga
 - [x] Deteksi dan tangani spam atau bot sederhana (komentar identik berulang, tautan promosi) — hasil: 0 spam, 0 copy-paste pada data saat ini
 - [x] Buat dua versi teks: *bersih ringan* (`text_light`, untuk model sentimen) dan *bersih penuh* (`text_full`, untuk topic modelling)
 
-**Output:** `data/processed/comments_clean.csv` (dibuat oleh `python preprocess.py`)
+**Output:** `data/processed/preprocessing/comments_clean.csv` (dibuat oleh `python scripts/preprocess.py`)
 
 ### Tahap 3: Membangun graf interaksi
 
 - [x] Definisikan edge: **penulis reply → penulis komentar induk** (directed)
-- [x] Tambahkan edge dari mention `@nama` di dalam teks (opsional, tandai tipe edge-nya)
+- [ ] Tambahkan edge dari mention `@nama` di dalam teks (opsional, belum dipakai pada graf saat ini)
 - [x] Bobot edge = jumlah interaksi antar pasangan akun (bukan edge ganda)
 - [x] Hapus self-loop (akun membalas dirinya sendiri), atau catat terpisah (`edges_selfloop.csv`)
 - [x] Simpan graf (`.graphml` / `.gexf` untuk Gephi, dan edge list CSV)
 
-**Output:** `data/processed/edges.csv`, `outputs/graph/network.graphml` (dibuat oleh `python build_graph.py`)
+**Output:** `data/processed/network_analysis/edges.csv`, `outputs/network_analysis/graph/network.graphml` (dibuat oleh `python scripts/build_graph.py`)
 
 ### Tahap 4: Analisis jaringan (SNA)
 
@@ -131,7 +131,7 @@ Catatan desain: akun yang menulis banyak komentar dengan isu dan sentimen beraga
 - [x] Closeness: kedekatan ke seluruh jaringan
 - [x] Eigenvector atau PageRank: pengaruh berdasarkan koneksi ke aktor penting
 
-**Output:** `outputs/tables/network_stats.csv`, `outputs/tables/centrality.csv`, `outputs/tables/top_actors.csv`, `outputs/figures/degree_distribution.png` (dibuat oleh `python analyze_network.py`)
+**Output:** `outputs/network_analysis/network_stats.csv`, `outputs/network_analysis/centrality.csv`, `outputs/network_analysis/top_actors.csv`, `outputs/network_analysis/figures/degree_distribution.png` (dibuat oleh `python scripts/analyze_network.py`)
 
 **Hasil (graf 2.601 node, 3.139 edge):** LCC 1.835 node (70,6%); 766 node di luar LCC tidak ikut analisis jarak/closeness/eigenvector. Avg degree 2,30, median 1; clustering 0,18; transitivity 0,02; reciprocity 0,09; assortativity negatif (-0,13). Pada LCC: avg path length 7,35, diameter 21. Distribusi degree heavy-tailed (power-law alpha 2,49, xmin 3, KS 0,02; indikasi saja, belum diuji terhadap log-normal).
 
@@ -146,7 +146,7 @@ Catatan desain: akun yang menulis banyak komentar dengan isu dan sentimen beraga
 - [x] Tetapkan batas ukuran komunitas minimum yang dianalisis (mis. 10 akun) dan gabungkan sisanya sebagai "komunitas kecil"
 - [x] Buat tabel `akun -> id_komunitas`
 
-**Output:** `outputs/tables/community_assignment.csv`, `community_stats.csv` (ukuran, density internal, hub utama, video dominan), `community_sweep.csv`, `community_summary.csv` (dibuat oleh `python detect_communities.py`; parameter di `config.py`)
+**Output:** `outputs/community_detection/community_assignment.csv`, `community_stats.csv` (ukuran, density internal, hub utama, video dominan), `community_sweep.csv`, `community_summary.csv` (dibuat oleh `python scripts/detect_communities.py`; parameter di `config.py`)
 
 **Hasil (Leiden, resolution 1,0, medoid dari 20 seed):**
 - Modularity 0,923 pada graf penuh dan 0,895 pada LCC saja (nilai graf penuh terlalu tinggi karena ratusan komponen kecil otomatis menjadi komunitas, jadi laporkan angka LCC). Louvain 0,922; ARI Louvain vs Leiden 0,96; ARI antar-seed rata-rata 0,98.
@@ -156,33 +156,33 @@ Catatan desain: akun yang menulis banyak komentar dengan isu dan sentimen beraga
 
 ### Tahap 6: Menggabungkan komentar dengan komunitas
 
-- [ ] `join` tabel komentar dengan tabel komunitas lewat ID akun
-- [ ] Beri label **"tanpa interaksi"** untuk akun yang tidak masuk jaringan (isolat), sebagai kelompok pembanding
-- [ ] Laporkan: jumlah komentar yang masuk komunitas, yang di kelompok tanpa interaksi, dan yang dibuang
+- [x] `join` tabel komentar dengan tabel komunitas lewat ID akun
+- [x] Beri label **"tanpa interaksi"** untuk akun yang tidak masuk jaringan (isolat), sebagai kelompok pembanding
+- [x] Laporkan: jumlah komentar yang masuk komunitas, yang di kelompok tanpa interaksi, dan yang dibuang
 
-**Output:** `data/processed/comments_with_community.csv`
+**Output:** `data/processed/community_detection/comments_with_community.csv`
 
 ### Tahap 7: Analisis isu
 
 - [ ] Eksplorasi awal: frekuensi kata, bigram/trigram, word cloud kasar
-- [ ] Topic modelling di level komentar: BERTopic (embedding bahasa Indonesia/multilingual) dan/atau LDA sebagai pembanding
+- [x] Topic modelling di level komentar: BERTopic dengan embedding multilingual
 - [ ] Evaluasi: topic coherence, pengecekan manual contoh komentar per topik
 - [ ] Beri nama topik secara manual berdasarkan kata kunci dan contoh komentar
 - [ ] Hitung distribusi topik **per komunitas** dan kata kunci khas tiap komunitas (mis. TF-IDF antar-komunitas)
 - [ ] Sebut tokoh/entitas politik yang paling sering muncul (named entity atau kamus nama tokoh)
 
-**Output:** `outputs/tables/topics.csv`, `outputs/tables/topic_by_community.csv`
+**Output:** `outputs/topic_extraction/topics.csv`, `outputs/topic_extraction/topic_by_community.csv`
 
 ### Tahap 8: Analisis sentimen
 
-- [ ] Tentukan pendekatan: model pre-trained bahasa Indonesia (mis. IndoBERT/IndoRoBERTa yang tersedia di Hugging Face, cek ketersediaan dan lisensinya), atau lexicon-based sebagai baseline
+- [x] Tentukan pendekatan: lexicon-based dengan tiga kelas positif, netral, dan negatif
 - [ ] Buat **sampel berlabel manual** (mis. 300 sampai 500 komentar, acak berstrata per komunitas) untuk validasi
 - [ ] Jika memungkinkan, dua orang pelabel dan hitung Cohen's kappa
 - [ ] Evaluasi: accuracy, precision, recall, F1 (macro). Bandingkan model dengan baseline
 - [ ] Jalankan model pada seluruh komentar, simpan label dan skor/probabilitas
 - [ ] Catat keterbatasan: sarkasme, bahasa campur, singkatan, konteks politik
 
-**Output:** `outputs/tables/sentiment_predictions.csv`, `outputs/tables/sentiment_eval.csv`
+**Output:** `outputs/sentiment_analysis/sentiment_predictions.csv`, `outputs/sentiment_analysis/sentiment_eval.csv`
 
 ### Tahap 9: Perbandingan antar komunitas
 
@@ -233,8 +233,8 @@ Beri cadangan waktu di minggu 1 (kuota API dan perubahan kriteria video biasanya
 | Pengambilan data | YouTube Data API v3 (`google-api-python-client`) |
 | Olah data | `pandas`, `numpy` |
 | Jaringan | `networkx`, `igraph`, `python-louvain`, `leidenalg`, Gephi |
-| Topic modelling | `bertopic`, `gensim` (LDA), `scikit-learn` |
-| Sentimen | `transformers` (IndoBERT/IndoRoBERTa), lexicon sebagai baseline |
+| Topic modelling | `bertopic`, `sentence-transformers`, `scikit-learn` |
+| Sentimen | lexicon dan `scikit-learn` untuk evaluasi |
 | Visualisasi | `matplotlib`, `plotly`, `pyvis`, Gephi |
 | Dashboard (opsional) | Streamlit |
 
@@ -249,7 +249,12 @@ project/
 ├── config.yaml                 # keyword, kriteria video, parameter
 ├── data/
 │   ├── raw/                    # hasil API, jangan diubah
-│   └── processed/              # data bersih, edges, komentar + komunitas
+│   └── processed/              # data antara per tahap
+│       ├── preprocessing/
+│       ├── network_analysis/
+│       ├── community_detection/
+│       ├── topic_extraction/
+│       └── sentiment_analysis/
 ├── notebooks/
 │   ├── 01_collect.ipynb
 │   ├── 02_preprocess.ipynb
@@ -260,9 +265,17 @@ project/
 │   └── 07_compare_visualize.ipynb
 ├── src/                        # fungsi yang dipakai ulang
 └── outputs/
-    ├── graph/
-    ├── tables/
-    └── figures/
+    ├── network_analysis/
+    │   ├── graph/
+    │   ├── *.csv
+    │   ├── graph/
+    │   └── figures/
+    ├── community_detection/*.csv
+    ├── topic_extraction/*.csv
+    │   └── figures/
+    ├── sentiment_analysis/*.csv
+    └── community_comparison/*.csv
+        └── figures/
 ```
 
 ---

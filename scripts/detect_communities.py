@@ -1,15 +1,20 @@
 """Deteksi komunitas pada graf reply YouTube."""
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 import networkx as nx
 import pandas as pd
 from sklearn.metrics import adjusted_rand_score
 
 import config
-from src import community as cm
+from src.community_detection import community as cm
 
 
 def main() -> None:
-    graph = nx.read_graphml(config.GRAPH_DIR / "network.graphml")
+    graph = nx.read_graphml(config.NETWORK_GRAPH_DIR / "network.graphml")
     undirected = cm.to_undirected_weighted(graph)
     nodes = list(undirected.nodes)
     seeds = list(range(config.COMMUNITY_N_SEEDS))
@@ -20,7 +25,7 @@ def main() -> None:
         seeds,
         config.COMMUNITY_MIN_SIZE,
     )
-    sweep.to_csv(config.TABLES_DIR / "community_sweep.csv", index=False)
+    sweep.to_csv(config.COMMUNITY_OUTPUT_DIR / "community_sweep.csv", index=False)
 
     runs = cm.run_many(
         undirected,
@@ -46,8 +51,8 @@ def main() -> None:
     primary = cm.primary_video(edges)
     association = cm.video_association(mapping, primary)
 
-    assignment.to_csv(config.TABLES_DIR / "community_assignment.csv", index=False)
-    stats.to_csv(config.TABLES_DIR / "community_stats.csv", index=False)
+    assignment.to_csv(config.COMMUNITY_OUTPUT_DIR / "community_assignment.csv", index=False)
+    stats.to_csv(config.COMMUNITY_OUTPUT_DIR / "community_stats.csv", index=False)
 
     summary_rows = [
         {"metric": "algorithm_final", "value": config.COMMUNITY_ALGORITHM},
@@ -82,7 +87,7 @@ def main() -> None:
     })
 
     videos = pd.read_csv(config.RAW_VIDEOS_PATH, dtype=str)
-    account_map = pd.read_csv(config.PROCESSED_DIR / "author_map.csv", dtype=str)
+    account_map = pd.read_csv(config.NETWORK_PROCESSED_DIR / "author_map.csv", dtype=str)
     owner_ids = set(
         account_map.loc[
             account_map["channel_id"].isin(set(videos["channel_id"])),
@@ -116,14 +121,14 @@ def main() -> None:
         )},
     ])
     pd.DataFrame(summary_rows).to_csv(
-        config.TABLES_DIR / "community_summary.csv",
+        config.COMMUNITY_OUTPUT_DIR / "community_summary.csv",
         index=False,
     )
 
     print(f"Graf: {undirected.number_of_nodes()} akun, {undirected.number_of_edges()} hubungan")
     print(f"Modularity: {cm.modularity(undirected, communities):.4f}")
     print(stats.to_string(index=False))
-    print(f"Tersimpan: {config.TABLES_DIR / 'community_assignment.csv'}")
+    print(f"Tersimpan: {config.COMMUNITY_OUTPUT_DIR / 'community_assignment.csv'}")
 
 
 if __name__ == "__main__":

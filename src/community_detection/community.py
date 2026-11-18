@@ -172,7 +172,7 @@ def assign_labels(
 def edges_by_video(
     raw_comments: pd.DataFrame,
 ) -> pd.DataFrame:
-    from src.network import prepare_accounts
+    from src.network_analysis.network import prepare_accounts
 
     comments, _ = prepare_accounts(raw_comments)
     comment_author = comments.set_index("comment_id")["author_id"]

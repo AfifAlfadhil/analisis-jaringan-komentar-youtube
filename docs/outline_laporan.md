@@ -79,7 +79,7 @@ Berikut adalah usulan **Outline Laporan Final Project** yang diselaraskan dengan
 - Ekstraksi topik dari komentar kelompok menggunakan pendekatan NLP (misal: BERTopic / TF-IDF / LDA).
 
 ### **2.7 Analisis Sentimen**
-- Klasifikasi opini (Positif, Negatif, Netral) menggunakan model *pre-trained* Transformer (IndoBERT/IndoRoBERTa).
+- Klasifikasi opini (Positif, Negatif, Netral) menggunakan pendekatan lexicon-based dan evaluasi terhadap sampel berlabel.
 - Pengujian statistik hubungan antar-komunitas dan distribusi sentimen (uji *Chi-Square* dan *Cramér's V*).
 
 ---

@@ -1,0 +1,5 @@
+﻿model,class,metric,value
+lexicon,all,accuracy,0.24653739612188366
+lexicon,all,precision_macro,0.5427417438821572
+lexicon,all,recall_macro,0.35563829314406253
+lexicon,all,f1_macro,0.21875432519013738

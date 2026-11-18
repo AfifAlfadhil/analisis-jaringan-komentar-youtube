@@ -1,10 +1,15 @@
 """Membangun graf dari reply komentar mentah."""
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 import networkx as nx
 import pandas as pd
 
 import config
-from src.network import build_edges, build_graph, prepare_accounts
+from src.network_analysis.network import build_edges, build_graph, prepare_accounts
 
 
 def main():
@@ -24,14 +29,14 @@ def main():
             g.nodes[node]["n_comments"] = 0
             g.nodes[node]["n_videos"] = 0
 
-    edges.to_csv(config.PROCESSED_DIR / "edges.csv", index=False)
-    selfloops.to_csv(config.PROCESSED_DIR / "edges_selfloop.csv", index=False)
-    account_map.to_csv(config.PROCESSED_DIR / "author_map.csv", index=False)
-    nx.write_graphml(g, config.GRAPH_DIR / "network.graphml")
-    nx.write_gexf(g, config.GRAPH_DIR / "network.gexf")
+    edges.to_csv(config.NETWORK_PROCESSED_DIR / "edges.csv", index=False)
+    selfloops.to_csv(config.NETWORK_PROCESSED_DIR / "edges_selfloop.csv", index=False)
+    account_map.to_csv(config.NETWORK_PROCESSED_DIR / "author_map.csv", index=False)
+    nx.write_graphml(g, config.NETWORK_GRAPH_DIR / "network.graphml")
+    nx.write_gexf(g, config.NETWORK_GRAPH_DIR / "network.gexf")
 
     print(f"Graf: {g.number_of_nodes()} akun, {g.number_of_edges()} hubungan")
-    print(f"Edge tersimpan: {config.PROCESSED_DIR / 'edges.csv'}")
+    print(f"Edge tersimpan: {config.NETWORK_PROCESSED_DIR / 'edges.csv'}")
 
 
 if __name__ == "__main__":

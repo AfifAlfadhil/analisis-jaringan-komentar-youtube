@@ -1,57 +1,62 @@
-# Analisis Jaringan Komentar YouTube
+# Analisis Komentar YouTube
 
-Pipeline ini hanya membangun jaringan reply dan mendeteksi komunitas akun.
+Pipeline ini menganalisis jaringan reply, komunitas diskusi, isu, dan sentimen
+komentar YouTube. Setiap tahap memiliki runner sendiri di `scripts/`.
+
+## Tahap dan input-output
+
+| Tahap | Runner | Input | Output |
+|---|---|---|---|
+| Pengumpulan | `scripts/collect_data.py` | YouTube Data API | `data/raw/` |
+| Preprocessing | `scripts/preprocess.py` | raw comments | `data/processed/preprocessing/` |
+| Graf dan SNA | `scripts/build_graph.py`, `scripts/analyze_network.py` | raw comments, videos | `data/processed/network_analysis/`, `outputs/network_analysis/` |
+| Community detection | `scripts/detect_communities.py` | graph, raw comments, videos | `outputs/community_detection/` |
+| Join | `scripts/join_communities.py` | cleaned comments, assignment komunitas | `data/processed/community_detection/` |
+| Ekstraksi isu | `scripts/topic_modeling.py` | komentar hasil join | `outputs/topic_extraction/`, `data/processed/topic_extraction/` |
+| Ekstraksi entitas | `scripts/extract_entities.py` | komentar hasil join | `outputs/topic_extraction/` |
+| Sentimen | `scripts/sentiment_analysis.py` | komentar hasil join | `outputs/sentiment_analysis/`, `data/processed/sentiment_analysis/` |
+| Perbandingan | `scripts/compare_communities.py` | hasil sentimen, isu, dan entitas | `outputs/community_comparison/` |
+
+Community detection tidak memakai hasil preprocessing teks, isu, atau sentimen.
+Tahap tersebut hanya memakai hubungan reply `penulis reply -> penulis komentar
+induk`.
 
 ## Menjalankan
 
 ```bash
 pip install -r requirements.txt
-python main.py
-python build_graph.py
-python analyze_centrality.py
-python detect_communities.py
+python scripts/collect_data.py
+python scripts/preprocess.py
+python scripts/build_graph.py
+python scripts/analyze_network.py
+python scripts/detect_communities.py
+python scripts/join_communities.py
+python scripts/topic_modeling.py
+python scripts/extract_entities.py
+python scripts/sentiment_analysis.py --make-sample
+python scripts/sentiment_analysis.py
+python scripts/compare_communities.py
 ```
 
-Untuk melanjutkan pengumpulan komentar setelah kuota API habis:
+BERTopic digunakan untuk ekstraksi isu/topik. Pasang `requirements-nlp.txt`
+sebelum menjalankan `scripts/topic_modeling.py`. Opsi `--no-bertopic` hanya
+menjalankan ringkasan kata kunci c-TF-IDF.
+
+Dashboard Streamlit adalah tambahan visualisasi. Dashboard hanya membaca
+output yang sudah dibuat, tidak menjalankan preprocessing, BERTopic, atau
+sentimen:
 
 ```bash
-python main.py --skip-search
-python build_graph.py
-python detect_communities.py
+streamlit run dashboard.py
 ```
 
-## Data
-
-Data mentah dipakai langsung:
-
-- `data/raw/comments.csv`: komentar tingkat atas dan reply
-- `data/raw/videos.csv`: metadata video
-
-Kolom yang digunakan untuk membangun jaringan:
-
-- `comment_id`: identitas komentar
-- `author_id`: channel ID penulis
-- `author_name`: nama tampilan, dipakai hanya sebagai fallback
-- `parent_id`: komentar induk yang dibalas
-- `video_id`: identitas video
-
-## Luaran
-
-- `data/processed/edges.csv`: edge `source -> target` beserta bobot
-- `data/processed/edges_selfloop.csv`: balasan akun kepada dirinya sendiri
-- `data/processed/author_map.csv`: pemetaan channel ID ke ID anonim
-- `outputs/graph/network.graphml`
-- `outputs/graph/network.gexf`
-- `outputs/tables/community_assignment.csv`: pemetaan akun ke komunitas
-- `outputs/tables/community_stats.csv`: ukuran dan hub tiap komunitas
-- `outputs/tables/centrality.csv`: metrik sentralitas akun
-
-## Definisi jaringan
-
-Setiap reply membentuk satu edge:
+## Struktur
 
 ```text
-penulis reply -> penulis komentar induk
+src/       fungsi reusable per tahap
+scripts/   runner tahap
+data/raw/  data sumber
+data/processed/  data antara
+outputs/   hasil analisis dan graf
+docs/      proposal dan panduan
 ```
-
-Bobot edge adalah jumlah reply dari pasangan akun yang sama. Self-loop tidak dimasukkan ke graf komunitas.

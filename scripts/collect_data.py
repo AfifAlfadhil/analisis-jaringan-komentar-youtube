@@ -1,13 +1,13 @@
 """
-main.py
-=======
+scripts/collect_data.py
+=======================
 Tahap 1 — Pengumpulan data YouTube (Pilpres 2029).
 
 Contoh:
-    python main.py                       # 5 kata kunci proposal, parameter default di config.py
-    python main.py --max-videos 10 --days 90 --min-comments 100
-    python main.py --skip-search         # lanjutkan ambil komentar dari data/raw/videos.csv
-    python main.py -k "Pilpres 2029" --max-videos 2 --max-threads 20   # uji kecil
+    python scripts/collect_data.py                       # 5 kata kunci proposal, parameter default di config.py
+    python scripts/collect_data.py --max-videos 10 --days 90 --min-comments 100
+    python scripts/collect_data.py --skip-search         # lanjutkan ambil komentar dari data/raw/videos.csv
+    python scripts/collect_data.py -k "Pilpres 2029" --max-videos 2 --max-threads 20   # uji kecil
 
 Output: data/raw/videos.csv dan data/raw/comments.csv
 Pengambilan komentar bersifat inkremental: video yang sudah ada di comments.csv
@@ -21,7 +21,7 @@ import argparse
 import pandas as pd
 
 import config
-from src.youtube_collector import (
+from src.data_collection.youtube_collector import (
     QuotaExceeded,
     YouTubeCollector,
     append_comments,

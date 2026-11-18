@@ -2,16 +2,27 @@
 .env
 
 # Pemetaan akun anonim -> handle asli (privat)
-data/processed/author_map.csv
+data/processed/network_analysis/author_map.csv
 
 # Python
 __pycache__/
-*.pyc
+*.py[cod]
 .venv/
 venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
 
 # Editor / OS
 .vscode/
 .idea/
 .DS_Store
 Thumbs.db
+
+# Cache embedding BERTopic (besar, bisa dibuat ulang)
+data/processed/topic_extraction/embeddings_*.npy
+
+# Local agent metadata
+.agents/
+.claude/
