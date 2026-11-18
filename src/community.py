@@ -1,19 +1,7 @@
-"""
-community.py
-============
-Tahap 5 — Community detection pada graf interaksi.
+"""Deteksi komunitas pada graf interaksi."""
 
-- Graf berarah diubah menjadi tak berarah berbobot (bobot dua arah dijumlahkan).
-- Algoritma: Louvain (baseline, NetworkX) dan Leiden (pembanding, python-igraph).
-- Kestabilan: dijalankan dengan banyak seed, diukur dengan modularity dan ARI antar-run.
-- Komunitas lebih kecil dari ambang ukuran digabung menjadi satu label "small".
-- Pemeriksaan keterkaitan komunitas dengan video (karena edge hanya terbentuk dalam video).
-"""
-
-from __future__ import annotations
-
-import random
 from itertools import combinations
+import random
 from typing import Dict, List, Sequence, Set
 
 import igraph as ig
@@ -22,203 +10,264 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import adjusted_rand_score, normalized_mutual_info_score
 
-SMALL_LABEL = "small"
+SMALL_LABEL = "kecil"
 
 
-# --------------------------------------------------------------------------- #
-# Graf dan algoritma
-# --------------------------------------------------------------------------- #
 def to_undirected_weighted(g: nx.DiGraph) -> nx.Graph:
-    """Graf tak berarah; bobot A->B dan B->A dijumlahkan."""
     u = nx.Graph()
     u.add_nodes_from(g.nodes)
-    for a, b, d in g.edges(data=True):
-        w = d.get("weight", 1)
-        if u.has_edge(a, b):
-            u[a][b]["weight"] += w
+    for source, target, data in g.edges(data=True):
+        weight = data.get("weight", 1)
+        if u.has_edge(source, target):
+            u[source][target]["weight"] += weight
         else:
-            u.add_edge(a, b, weight=w)
+            u.add_edge(source, target, weight=weight)
     return u
 
 
-def run_louvain(u: nx.Graph, resolution: float, seed: int) -> List[Set]:
-    comms = nx.community.louvain_communities(u, weight="weight", resolution=resolution, seed=seed)
-    return [set(c) for c in comms]
-
-
-def run_leiden(u: nx.Graph, resolution: float, seed: int) -> List[Set]:
-    nodes = list(u.nodes)
-    idx = {n: i for i, n in enumerate(nodes)}
-    g = ig.Graph(n=len(nodes), edges=[(idx[a], idx[b]) for a, b in u.edges()], directed=False)
-    g.es["weight"] = [d["weight"] for _, _, d in u.edges(data=True)]
-    random.seed(seed)  # igraph memakai generator acak Python
-    part = g.community_leiden(
-        objective_function="modularity", weights="weight",
-        resolution=resolution, n_iterations=-1,
+def run_louvain(u: nx.Graph, resolution: float, seed: int) -> List[Set[str]]:
+    communities = nx.community.louvain_communities(
+        u, weight="weight", resolution=resolution, seed=seed
     )
-    groups: Dict[int, Set] = {}
-    for node, m in zip(nodes, part.membership):
-        groups.setdefault(m, set()).add(node)
+    return [set(community) for community in communities]
+
+
+def run_leiden(u: nx.Graph, resolution: float, seed: int) -> List[Set[str]]:
+    random.seed(seed)
+    nodes = list(u.nodes)
+    index = {node: i for i, node in enumerate(nodes)}
+    graph = ig.Graph(
+        n=len(nodes),
+        edges=[(index[source], index[target]) for source, target in u.edges()],
+        directed=False,
+    )
+    graph.es["weight"] = [data["weight"] for _, _, data in u.edges(data=True)]
+    partition = graph.community_leiden(
+        objective_function="modularity",
+        weights="weight",
+        resolution=resolution,
+        n_iterations=-1,
+    )
+    groups: Dict[int, Set[str]] = {}
+    for node, community in zip(nodes, partition.membership):
+        groups.setdefault(community, set()).add(node)
     return list(groups.values())
 
 
 ALGORITHMS = {"louvain": run_louvain, "leiden": run_leiden}
 
 
-def modularity(u: nx.Graph, comms: Sequence[Set]) -> float:
-    """Modularity standar (resolution = 1) agar bisa dibandingkan antar-algoritma dan antar-resolution."""
-    return nx.community.modularity(u, comms, weight="weight")
+def modularity(u: nx.Graph, communities: Sequence[Set[str]]) -> float:
+    return nx.community.modularity(u, communities, weight="weight")
 
 
-def labels_of(comms: Sequence[Set], nodes: Sequence) -> np.ndarray:
-    lab = {}
-    for i, c in enumerate(comms):
-        for n in c:
-            lab[n] = i
-    return np.array([lab[n] for n in nodes])
+def labels_of(communities: Sequence[Set[str]], nodes: Sequence[str]) -> np.ndarray:
+    labels = {}
+    for community_id, community in enumerate(communities):
+        for node in community:
+            labels[node] = community_id
+    return np.array([labels[node] for node in nodes])
 
 
-# --------------------------------------------------------------------------- #
-# Sweep resolution + kestabilan
-# --------------------------------------------------------------------------- #
-def run_many(u: nx.Graph, algorithm: str, resolution: float, seeds: Sequence[int]) -> List[List[Set]]:
-    fn = ALGORITHMS[algorithm]
-    return [fn(u, resolution, s) for s in seeds]
+def run_many(
+    u: nx.Graph,
+    algorithm: str,
+    resolution: float,
+    seeds: Sequence[int],
+) -> List[List[Set[str]]]:
+    runner = ALGORITHMS[algorithm]
+    return [runner(u, resolution, seed) for seed in seeds]
 
 
-def summarize_runs(u: nx.Graph, runs: List[List[Set]], min_size: int, lcc: Set | None = None) -> Dict[str, float]:
-    """
-    Ringkasan banyak run. Modularity dan ARI pada graf penuh cenderung terlalu tinggi karena
-    graf terdiri dari ratusan komponen kecil yang otomatis menjadi komunitas; bila `lcc`
-    diberikan, metrik yang sama dihitung khusus di LCC (lebih informatif).
-    """
+def summarize_runs(
+    u: nx.Graph,
+    runs: Sequence[Sequence[Set[str]]],
+    min_size: int,
+) -> Dict[str, float]:
     nodes = list(u.nodes)
-    mods = [modularity(u, r) for r in runs]
-    labs = [labels_of(r, nodes) for r in runs]
-    aris = [adjusted_rand_score(a, b) for a, b in combinations(labs, 2)] or [1.0]
-    n_all = [len(r) for r in runs]
-    n_big = [sum(1 for c in r if len(c) >= min_size) for r in runs]
-    share_big = [sum(len(c) for c in r if len(c) >= min_size) / len(nodes) for r in runs]
-    out = {
+    modularities = [modularity(u, run) for run in runs]
+    label_runs = [labels_of(run, nodes) for run in runs]
+    ari_values = [
+        adjusted_rand_score(left, right)
+        for left, right in combinations(label_runs, 2)
+    ] or [1.0]
+
+    community_counts = [len(run) for run in runs]
+    min_size_counts = [
+        sum(1 for community in run if len(community) >= min_size)
+        for run in runs
+    ]
+    node_shares = [
+        sum(len(community) for community in run if len(community) >= min_size) / len(nodes)
+        for run in runs
+    ]
+
+    return {
         "n_runs": len(runs),
-        "modularity_mean": float(np.mean(mods)),
-        "modularity_std": float(np.std(mods)),
-        "n_communities_mean": float(np.mean(n_all)),
-        "n_communities_min_size_mean": float(np.mean(n_big)),
-        "share_nodes_in_min_size_mean": float(np.mean(share_big)),
-        "ari_pairwise_mean": float(np.mean(aris)),
-        "ari_pairwise_min": float(np.min(aris)),
+        "modularity_mean": float(np.mean(modularities)),
+        "modularity_std": float(np.std(modularities)),
+        "n_communities_mean": float(np.mean(community_counts)),
+        "n_communities_min_size_mean": float(np.mean(min_size_counts)),
+        "share_nodes_in_min_size_mean": float(np.mean(node_shares)),
+        "ari_pairwise_mean": float(np.mean(ari_values)),
+        "ari_pairwise_min": float(np.min(ari_values)),
     }
-    if lcc:
-        sub = u.subgraph(lcc)
-        lcc_nodes_list = list(sub.nodes)
-        lcc_runs = [[c & lcc for c in r if c & lcc] for r in runs]
-        lmods = [modularity(sub, r) for r in lcc_runs]
-        llabs = [labels_of(r, lcc_nodes_list) for r in lcc_runs]
-        laris = [adjusted_rand_score(a, b) for a, b in combinations(llabs, 2)] or [1.0]
-        out.update({
-            "lcc_modularity_mean": float(np.mean(lmods)),
-            "lcc_modularity_std": float(np.std(lmods)),
-            "lcc_n_communities_mean": float(np.mean([len(r) for r in lcc_runs])),
-            "lcc_n_communities_min_size_mean": float(np.mean([sum(1 for c in r if len(c) >= min_size) for r in lcc_runs])),
-            "lcc_ari_pairwise_mean": float(np.mean(laris)),
-            "lcc_ari_pairwise_min": float(np.min(laris)),
-        })
-    return out
 
 
-def sweep(u: nx.Graph, resolutions: Sequence[float], seeds: Sequence[int], min_size: int,
-          lcc: Set | None = None) -> pd.DataFrame:
+def sweep(
+    u: nx.Graph,
+    resolutions: Sequence[float],
+    seeds: Sequence[int],
+    min_size: int,
+) -> pd.DataFrame:
     rows = []
-    for algo in ALGORITHMS:
-        for res in resolutions:
-            runs = run_many(u, algo, res, seeds)
-            rows.append({"algorithm": algo, "resolution": res, **summarize_runs(u, runs, min_size, lcc)})
+    for algorithm in ALGORITHMS:
+        for resolution in resolutions:
+            runs = run_many(u, algorithm, resolution, seeds)
+            rows.append({
+                "algorithm": algorithm,
+                "resolution": resolution,
+                **summarize_runs(u, runs, min_size),
+            })
     return pd.DataFrame(rows)
 
 
-def medoid_partition(u: nx.Graph, runs: List[List[Set]]) -> List[Set]:
-    """Partisi yang paling mirip dengan semua run lain (rata-rata ARI tertinggi)."""
-    nodes = list(u.nodes)
-    labs = [labels_of(r, nodes) for r in runs]
+def medoid_partition(
+    u: nx.Graph,
+    runs: Sequence[Sequence[Set[str]]],
+) -> List[Set[str]]:
     if len(runs) == 1:
-        return runs[0]
-    scores = [
-        np.mean([adjusted_rand_score(labs[i], labs[j]) for j in range(len(labs)) if j != i])
-        for i in range(len(labs))
-    ]
-    return runs[int(np.argmax(scores))]
+        return list(runs[0])
+
+    nodes = list(u.nodes)
+    label_runs = [labels_of(run, nodes) for run in runs]
+    scores = []
+    for i in range(len(label_runs)):
+        others = [
+            adjusted_rand_score(label_runs[i], label_runs[j])
+            for j in range(len(label_runs))
+            if i != j
+        ]
+        scores.append(float(np.mean(others)))
+    return list(runs[int(np.argmax(scores))])
 
 
-# --------------------------------------------------------------------------- #
-# Penetapan label komunitas + statistik
-# --------------------------------------------------------------------------- #
-def assign_labels(comms: Sequence[Set], min_size: int) -> Dict[str, str]:
-    """Komunitas >= min_size diberi C01, C02, ... (urut ukuran); sisanya 'small'."""
-    ordered = sorted(comms, key=len, reverse=True)
+def assign_labels(
+    communities: Sequence[Set[str]],
+    min_size: int,
+) -> Dict[str, str]:
     mapping: Dict[str, str] = {}
-    k = 0
-    for c in ordered:
-        if len(c) >= min_size:
-            k += 1
-            label = f"C{k:02d}"
+    community_number = 0
+    for community in sorted(communities, key=len, reverse=True):
+        if len(community) >= min_size:
+            community_number += 1
+            label = f"C{community_number:02d}"
         else:
             label = SMALL_LABEL
-        for n in c:
-            mapping[n] = label
+        for node in community:
+            mapping[node] = label
     return mapping
 
 
-def primary_video(ev: pd.DataFrame) -> pd.Series:
-    """Video tempat tiap akun paling banyak berinteraksi (berdasarkan bobot edge)."""
-    long = ev.melt(id_vars=["video_id", "weight"], value_vars=["source", "target"], value_name="author_id")
-    w = long.groupby(["author_id", "video_id"])["weight"].sum().reset_index()
-    w = w.sort_values(["author_id", "weight", "video_id"], ascending=[True, False, True])
-    return w.drop_duplicates("author_id").set_index("author_id")["video_id"]
+def edges_by_video(
+    raw_comments: pd.DataFrame,
+) -> pd.DataFrame:
+    from src.network import prepare_accounts
+
+    comments, _ = prepare_accounts(raw_comments)
+    comment_author = comments.set_index("comment_id")["author_id"]
+    comments["parent_author_id"] = comments["parent_id"].replace("", np.nan).map(comment_author)
+    replies = comments[
+        comments["parent_id"].notna()
+        & comments["author_id"].notna()
+        & comments["parent_author_id"].notna()
+    ].copy()
+
+    replies["source"] = replies["author_id"]
+    replies["target"] = replies["parent_author_id"]
+    replies = replies[replies["source"].ne(replies["target"])]
+    return (
+        replies.groupby(["video_id", "source", "target"])
+        .size()
+        .rename("weight")
+        .reset_index()
+    )
 
 
-def community_stats(u: nx.Graph, mapping: Dict[str, str], ev: pd.DataFrame) -> pd.DataFrame:
-    """Ukuran, density internal, hub utama, dan video dominan tiap komunitas."""
+def primary_video(edges: pd.DataFrame) -> pd.Series:
+    long = edges.melt(
+        id_vars=["video_id", "weight"],
+        value_vars=["source", "target"],
+        value_name="author_id",
+    )
+    weights = long.groupby(["author_id", "video_id"])["weight"].sum().reset_index()
+    weights = weights.sort_values(
+        ["author_id", "weight", "video_id"],
+        ascending=[True, False, True],
+    )
+    return weights.drop_duplicates("author_id").set_index("author_id")["video_id"]
+
+
+def community_stats(
+    u: nx.Graph,
+    mapping: Dict[str, str],
+    edges: pd.DataFrame,
+) -> pd.DataFrame:
     rows = []
-    labels = sorted(set(mapping.values()), key=lambda x: (x == SMALL_LABEL, x))
-    ev = ev.copy()
-    ev["c_s"] = ev["source"].map(mapping)
-    ev["c_t"] = ev["target"].map(mapping)
-    for lab in labels:
-        members = [n for n, c in mapping.items() if c == lab]
-        sub = u.subgraph(members)
-        n = len(members)
-        m_int = sub.number_of_edges()
-        m_total = sum(dict(u.degree(members)).values()) - m_int  # edge unik yang menyentuh komunitas
-        deg = sorted(sub.degree(), key=lambda x: -x[1])
-        inside = ev[(ev["c_s"] == lab) & (ev["c_t"] == lab)]
-        vshare = inside.groupby("video_id")["weight"].sum()
+    labels = sorted(set(mapping.values()), key=lambda value: (value == SMALL_LABEL, value))
+
+    edge_data = edges.copy()
+    edge_data["source_community"] = edge_data["source"].map(mapping)
+    edge_data["target_community"] = edge_data["target"].map(mapping)
+
+    for label in labels:
+        members = [node for node, community in mapping.items() if community == label]
+        subgraph = u.subgraph(members)
+        degree = sorted(subgraph.degree(weight="weight"), key=lambda item: item[1], reverse=True)
+
+        internal = edge_data[
+            edge_data["source_community"].eq(label)
+            & edge_data["target_community"].eq(label)
+        ]
+        video_weights = internal.groupby("video_id")["weight"].sum()
+        dominant_video = video_weights.idxmax() if len(video_weights) else ""
+        dominant_share = (
+            float(video_weights.max() / video_weights.sum())
+            if len(video_weights)
+            else np.nan
+        )
+
         rows.append({
-            "community_id": lab,
-            "n_nodes": n,
-            "n_edges_internal": m_int,
-            "share_edges_internal": m_int / m_total if m_total else np.nan,
-            "density_internal": nx.density(sub) if n > 1 else np.nan,
-            "avg_degree_internal": 2 * m_int / n,
-            "hub_author_id": deg[0][0] if deg else "",
-            "hub_degree_internal": deg[0][1] if deg else 0,
-            "top3_hubs": ";".join(a for a, _ in deg[:3]),
-            "n_videos": int(vshare.size),
-            "dominant_video_id": vshare.idxmax() if len(vshare) else "",
-            "dominant_video_share": float(vshare.max() / vshare.sum()) if len(vshare) else np.nan,
+            "community_id": label,
+            "n_nodes": len(members),
+            "n_edges_internal": subgraph.number_of_edges(),
+            "density_internal": nx.density(subgraph) if len(members) > 1 else np.nan,
+            "hub_author_id": degree[0][0] if degree else "",
+            "hub_degree": degree[0][1] if degree else 0,
+            "dominant_video_id": dominant_video,
+            "dominant_video_share": dominant_share,
         })
     return pd.DataFrame(rows)
 
 
-def video_association(mapping: Dict[str, str], pv: pd.Series) -> Dict[str, float]:
-    """Seberapa jauh komunitas hanya mengulang pembagian per video (NMI/ARI terhadap video utama akun)."""
-    nodes = [n for n in mapping if n in pv.index]
-    c = [mapping[n] for n in nodes]
-    v = [pv[n] for n in nodes]
-    big = [i for i, x in enumerate(c) if x != SMALL_LABEL]
+def video_association(
+    mapping: Dict[str, str],
+    primary_videos: pd.Series,
+) -> Dict[str, float]:
+    nodes = [node for node in mapping if node in primary_videos.index]
+    communities = [mapping[node] for node in nodes]
+    videos = [primary_videos[node] for node in nodes]
+    major = [i for i, label in enumerate(communities) if label != SMALL_LABEL]
+
     return {
-        "nmi_all_nodes": float(normalized_mutual_info_score(c, v)),
-        "ari_all_nodes": float(adjusted_rand_score(c, v)),
-        "nmi_nodes_in_min_size": float(normalized_mutual_info_score([c[i] for i in big], [v[i] for i in big])) if big else np.nan,
-        "ari_nodes_in_min_size": float(adjusted_rand_score([c[i] for i in big], [v[i] for i in big])) if big else np.nan,
+        "nmi_all_nodes": float(normalized_mutual_info_score(communities, videos)),
+        "ari_all_nodes": float(adjusted_rand_score(communities, videos)),
+        "nmi_nodes_min_size": float(normalized_mutual_info_score(
+            [communities[i] for i in major],
+            [videos[i] for i in major],
+        )) if major else np.nan,
+        "ari_nodes_min_size": float(adjusted_rand_score(
+            [communities[i] for i in major],
+            [videos[i] for i in major],
+        )) if major else np.nan,
     }

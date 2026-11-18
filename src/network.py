@@ -1,17 +1,4 @@
-"""
-network.py
-==========
-Tahap 3 — Membangun graf interaksi antar-akun dari comments_clean.csv.
-
-Definisi operasional edge (directed):
-- reply   : penulis reply -> penulis komentar induk (thread)
-- mention : penulis komentar -> akun lain yang di-mention (@handle) di teks,
-            hanya untuk akun yang dikenal di dataset dan BUKAN penulis induk
-            pada reply yang sama (agar tidak dihitung dua kali).
-Bobot = jumlah interaksi per pasangan (source, target, type).
-Self-loop dipisahkan dan tidak masuk graf.
-Komentar spam/kosong (keep_sentiment == False) tidak membentuk edge.
-"""
+"""Pembentukan graf interaksi dari data komentar mentah."""
 
 from __future__ import annotations
 
@@ -21,75 +8,62 @@ import networkx as nx
 import pandas as pd
 
 
+def prepare_accounts(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
+    """Anonymize channel IDs and map comment_id to the account that wrote it."""
+    df = df.copy()
+    df["author_id"] = df["author_id"].fillna("").astype(str).str.strip()
+    df["author_name"] = df["author_name"].fillna("").astype(str).str.strip()
+
+    df["account_key"] = df["author_id"]
+    no_channel = df["account_key"].eq("")
+    df.loc[no_channel, "account_key"] = "name:" + df.loc[no_channel, "author_name"].str.lower()
+    df.loc[df["account_key"].eq("name:"), "account_key"] = pd.NA
+
+    mapping = {}
+    for key in df["account_key"].dropna():
+        if key not in mapping:
+            mapping[key] = f"user_{len(mapping) + 1:04d}"
+
+    df["author_id"] = df["account_key"].map(mapping)
+    handles = df.dropna(subset=["account_key"]).groupby("account_key")["author_name"].last()
+    account_map = pd.DataFrame({
+        "author_id": list(mapping.values()),
+        "channel_id": list(mapping.keys()),
+        "handle": [handles.get(key, "") for key in mapping],
+    })
+    return df, account_map
+
+
 def build_edges(df: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
-    """Return (edges, selfloops). Kolom keduanya: source, target, weight, type."""
-    d = df[df["keep_sentiment"]]
-    rows = []
+    """Return reply edges and self-loops."""
+    df, account_map = prepare_accounts(df)
+    comment_author = df.set_index("comment_id")["author_id"]
 
-    rep = d[(d["type"] == "reply") & d["parent_author_id"].notna()]
-    for r in rep.itertuples():
-        rows.append((r.author_id, r.parent_author_id, "reply"))
+    df["parent_author_id"] = df["parent_id"].map(comment_author)
+    replies = df[
+        df["parent_id"].notna()
+        & df["author_id"].notna()
+        & df["parent_author_id"].notna()
+    ]
 
-    with_mention = d[d["mentions"] != ""]
-    for r in with_mention.itertuples():
-        parent = r.parent_author_id if r.type == "reply" else None
-        for m in str(r.mentions).split(";"):
-            if m and m != parent:
-                rows.append((r.author_id, m, "mention"))
+    if replies.empty:
+        return pd.DataFrame(columns=["source", "target", "weight"]), pd.DataFrame(columns=["source", "target", "weight"]), account_map
 
-    cols = ["source", "target", "weight", "type"]
-    if not rows:
-        return pd.DataFrame(columns=cols), pd.DataFrame(columns=cols)
+    rows = replies.rename(columns={"author_id": "source"})[["source", "parent_author_id"]]
+    rows = rows.rename(columns={"parent_author_id": "target"})
+    rows = rows[rows["source"].ne(rows["target"])]
+    edges = rows.groupby(["source", "target"]).size().rename("weight").reset_index()
+    edges = edges.sort_values(["weight", "source", "target"], ascending=[False, True, True]).reset_index(drop=True)
 
-    raw = pd.DataFrame(rows, columns=["source", "target", "type"])
-    is_self = raw["source"] == raw["target"]
-
-    def aggregate(x: pd.DataFrame) -> pd.DataFrame:
-        out = x.groupby(["source", "target", "type"]).size().rename("weight").reset_index()
-        return out[cols].sort_values(
-            ["type", "weight", "source", "target"], ascending=[True, False, True, True]
-        ).reset_index(drop=True)
-
-    return aggregate(raw[~is_self]), aggregate(raw[is_self])
+    raw_loops = replies.rename(columns={"author_id": "source"})[["source", "parent_author_id"]]
+    raw_loops = raw_loops.rename(columns={"parent_author_id": "target"})
+    loops = raw_loops[raw_loops["source"].eq(raw_loops["target"])]
+    loops = loops.groupby(["source", "target"]).size().rename("weight").reset_index() if not loops.empty else pd.DataFrame(columns=["source", "target", "weight"])
+    return edges, loops, account_map
 
 
-def build_graph(edges: pd.DataFrame, comments: pd.DataFrame) -> nx.DiGraph:
-    """Graf berarah berbobot. Satu edge per pasangan; bobot per tipe disimpan sebagai atribut."""
+def build_graph(edges: pd.DataFrame) -> nx.DiGraph:
     g = nx.DiGraph()
-    for (s, t), grp in edges.groupby(["source", "target"]):
-        w = grp.set_index("type")["weight"].to_dict()
-        g.add_edge(
-            s, t,
-            weight=int(sum(w.values())),
-            weight_reply=int(w.get("reply", 0)),
-            weight_mention=int(w.get("mention", 0)),
-        )
-
-    per_author = comments.groupby("author_id").agg(
-        n_comments=("comment_id", "size"),
-        n_videos=("video_id", "nunique"),
-    )
-    for n in g.nodes:
-        if n in per_author.index:
-            g.nodes[n]["n_comments"] = int(per_author.at[n, "n_comments"])
-            g.nodes[n]["n_videos"] = int(per_author.at[n, "n_videos"])
-        else:  # akun hanya pernah muncul sebagai target (dibalas/di-mention)
-            g.nodes[n]["n_comments"] = 0
-            g.nodes[n]["n_videos"] = 0
+    for row in edges.itertuples(index=False):
+        g.add_edge(row.source, row.target, weight=int(row.weight))
     return g
-
-
-def graph_summary(g: nx.DiGraph) -> pd.DataFrame:
-    """Ringkasan singkat untuk pengecekan awal (statistik lengkap ada di Tahap 4)."""
-    comps = sorted(nx.weakly_connected_components(g), key=len, reverse=True)
-    lcc = len(comps[0]) if comps else 0
-    n = g.number_of_nodes()
-    return pd.DataFrame([
-        {"metric": "nodes", "value": n},
-        {"metric": "edges", "value": g.number_of_edges()},
-        {"metric": "density", "value": round(nx.density(g), 6)},
-        {"metric": "weakly_connected_components", "value": len(comps)},
-        {"metric": "lcc_nodes", "value": lcc},
-        {"metric": "lcc_share_of_nodes", "value": round(lcc / n, 4) if n else 0},
-        {"metric": "components_with_2_nodes", "value": sum(1 for c in comps if len(c) == 2)},
-    ])
