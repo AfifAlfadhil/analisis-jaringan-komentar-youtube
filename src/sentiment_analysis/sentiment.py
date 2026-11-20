@@ -1,100 +1,168 @@
-"""Lexicon-based sentiment classification and evaluation."""
+"""Multi-annotator sentiment agreement (Fleiss' Kappa) and Majority Vote utilities."""
 
 from __future__ import annotations
 
-import re
-from pathlib import Path
-from typing import Iterable
+from collections import Counter
+from typing import Iterable, Sequence
 
+import numpy as np
 import pandas as pd
-from sklearn.metrics import (
-    accuracy_score,
-    cohen_kappa_score,
-    confusion_matrix,
-    f1_score,
-    precision_score,
-    recall_score,
-)
 
 LABELS = ["positif", "netral", "negatif"]
 
-POSITIVE = {
-    "bagus", "baik", "dukung", "dukungan", "hebat", "mantap", "setuju",
-    "sukses", "menang", "benar", "cinta", "harapan",
-}
-NEGATIVE = {
-    "buruk", "bodoh", "benci", "gagal", "jahat", "korup", "marah",
-    "salah", "tolak", "bohong", "hancur", "hina", "takut",
-}
-
 
 def normalize_label(value: object) -> str | None:
+    """Normalize raw LLM or manual label text into positif / netral / negatif."""
     if value is None or pd.isna(value) or not str(value).strip():
         return None
-    value = str(value).strip().lower()
+    text = str(value).strip().lower()
     aliases = {
-        "pos": "positif", "positive": "positif", "1": "positif",
-        "net": "netral", "neutral": "netral", "0": "netral",
-        "neg": "negatif", "negative": "negatif", "-1": "negatif",
+        "pos": "positif",
+        "positive": "positif",
+        "positivo": "positif",
+        "1": "positif",
+        "+1": "positif",
+        "net": "netral",
+        "neutral": "netral",
+        "neutro": "netral",
+        "0": "netral",
+        "neg": "negatif",
+        "negative": "negatif",
+        "negativo": "negatif",
+        "-1": "negatif",
     }
-    return aliases.get(value, value if value in LABELS else None)
+    return aliases.get(text, text if text in LABELS else None)
 
 
-def load_lexicon(path: Path) -> dict[str, int]:
-    scores = {word: 1 for word in POSITIVE}
-    scores.update({word: -1 for word in NEGATIVE})
-    for filename, score in (("positive.tsv", 1), ("negative.tsv", -1)):
-        file_path = path / filename
-        if not file_path.exists():
-            continue
-        for line in file_path.read_text(encoding="utf-8").splitlines():
-            word = line.strip().lower()
-            if word and not word.startswith("#"):
-                scores[word] = score
-    return scores
+def interpret_landis_koch(kappa: float | None) -> str:
+    """Interpret Kappa value using Landis & Koch (1977) benchmark scale."""
+    if kappa is None or np.isnan(kappa):
+        return "N/A"
+    if kappa < 0.0:
+        return "Poor"
+    if kappa <= 0.20:
+        return "Slight"
+    if kappa <= 0.40:
+        return "Fair"
+    if kappa <= 0.60:
+        return "Moderate"
+    if kappa <= 0.80:
+        return "Substantial"
+    return "Almost Perfect"
 
 
-def lexicon_predict(texts: Iterable[str], lexicon: dict[str, int]) -> pd.DataFrame:
-    rows = []
-    for text in texts:
-        words = re.findall(r"\w+", str(text).lower())
-        score = sum(lexicon.get(word, 0) for word in words)
-        label = "positif" if score > 0 else "negatif" if score < 0 else "netral"
-        rows.append({"label_lexicon": label, "score_lexicon": score})
-    return pd.DataFrame(rows)
+def _build_count_matrix(
+    ratings_df: pd.DataFrame,
+    annotator_cols: Sequence[str],
+    labels: Sequence[str] = LABELS,
+) -> np.ndarray:
+    """Build N x k count matrix where n_ij = number of raters assigning item i to label j."""
+    valid = ratings_df[list(annotator_cols)].dropna()
+    if valid.empty:
+        return np.zeros((0, len(labels)), dtype=float)
+    matrix = np.zeros((len(valid), len(labels)), dtype=float)
+    values = valid.to_numpy()
+    for j, label in enumerate(labels):
+        matrix[:, j] = (values == label).sum(axis=1)
+    n_raters = len(annotator_cols)
+    complete_mask = matrix.sum(axis=1) == n_raters
+    return matrix[complete_mask]
 
 
-def agreement(left: Iterable[str], right: Iterable[str]) -> dict:
-    left = list(left)
-    right = list(right)
-    if not left:
-        return {"n_double_labeled": 0, "percent_agreement": None, "cohen_kappa": None}
-    return {
-        "n_double_labeled": len(left),
-        "percent_agreement": sum(a == b for a, b in zip(left, right)) / len(left),
-        "cohen_kappa": cohen_kappa_score(left, right),
-    }
+def fleiss_kappa(
+    ratings_df: pd.DataFrame,
+    annotator_cols: Sequence[str],
+    labels: Sequence[str] = LABELS,
+) -> float:
+    """Compute Fleiss' Kappa (Fleiss, 1971) for >= 2 categorical raters."""
+    matrix = _build_count_matrix(ratings_df, annotator_cols, labels)
+    n_items = matrix.shape[0]
+    n_raters = len(annotator_cols)
+    if n_items == 0 or n_raters < 2:
+        return float("nan")
+
+    p_i = (np.sum(matrix ** 2, axis=1) - n_raters) / (n_raters * (n_raters - 1))
+    p_bar = float(np.mean(p_i))
+
+    p_j = np.sum(matrix, axis=0) / (n_items * n_raters)
+    p_e = float(np.sum(p_j ** 2))
+
+    if np.isclose(1.0 - p_e, 0.0):
+        return 1.0 if np.isclose(p_bar, 1.0) else 0.0
+    return float((p_bar - p_e) / (1.0 - p_e))
 
 
-def evaluate(gold: Iterable[str], predicted: Iterable[str], model: str) -> list[dict]:
-    gold = list(gold)
-    predicted = list(predicted)
-    metrics = {
-        "accuracy": accuracy_score(gold, predicted),
-        "precision_macro": precision_score(gold, predicted, labels=LABELS, average="macro", zero_division=0),
-        "recall_macro": recall_score(gold, predicted, labels=LABELS, average="macro", zero_division=0),
-        "f1_macro": f1_score(gold, predicted, labels=LABELS, average="macro", zero_division=0),
-    }
-    return [
-        {"model": model, "class": "all", "metric": name, "value": value}
-        for name, value in metrics.items()
+def pairwise_percent_agreement(
+    ratings_df: pd.DataFrame,
+    annotator_cols: Sequence[str],
+    labels: Sequence[str] = LABELS,
+) -> float:
+    """Average pairwise percent agreement (P_bar) across all annotator pairs."""
+    matrix = _build_count_matrix(ratings_df, annotator_cols, labels)
+    n_items = matrix.shape[0]
+    n_raters = len(annotator_cols)
+    if n_items == 0 or n_raters < 2:
+        return float("nan")
+    p_i = (np.sum(matrix ** 2, axis=1) - n_raters) / (n_raters * (n_raters - 1))
+    return float(np.mean(p_i))
+
+
+def majority_vote(
+    row_labels: Iterable[str | None],
+    tie_breaker: str = "netral",
+) -> tuple[str, bool]:
+    """Resolve final label via Majority Vote (seri 1-1-1 -> tie_breaker)."""
+    valid = [lbl for lbl in row_labels if lbl in LABELS]
+    if not valid:
+        return tie_breaker, True
+    counts = Counter(valid)
+    top_label, top_count = counts.most_common(1)[0]
+    runners = [lbl for lbl, cnt in counts.items() if cnt == top_count]
+    if len(runners) == 1:
+        return top_label, False
+    return tie_breaker, True
+
+
+def resolve_majority_vote(
+    df: pd.DataFrame,
+    annotator_cols: Sequence[str],
+    tie_breaker: str = "netral",
+) -> tuple[pd.Series, pd.Series]:
+    """Apply majority_vote row-wise and return (sentiment_series, is_tie_series)."""
+    results = [
+        majority_vote(row, tie_breaker=tie_breaker)
+        for row in df[list(annotator_cols)].itertuples(index=False, name=None)
     ]
+    labels = pd.Series([r[0] for r in results], index=df.index, dtype="object")
+    ties = pd.Series([r[1] for r in results], index=df.index, dtype="bool")
+    return labels, ties
 
 
-def confusion(gold: Iterable[str], predicted: Iterable[str], model: str) -> pd.DataFrame:
-    matrix = confusion_matrix(gold, predicted, labels=LABELS)
-    return pd.DataFrame(matrix, index=LABELS, columns=LABELS).rename_axis(
-        "gold"
-    ).reset_index().melt(id_vars="gold", var_name="predicted", value_name="n").assign(
-        model=model
-    )
+def compute_agreement_summary(
+    df: pd.DataFrame,
+    annotator_cols: Sequence[str],
+    target_kappa: float = 0.85,
+) -> dict:
+    """Compute Fleiss' Kappa, percent agreement, and Landis & Koch interpretation."""
+    valid = df[list(annotator_cols)].dropna()
+    valid = valid[valid.apply(lambda r: all(x in LABELS for x in r), axis=1)]
+    n_comments = len(valid)
+    if n_comments == 0:
+        return {
+            "n_comments": 0,
+            "fleiss_kappa": float("nan"),
+            "percent_agreement": float("nan"),
+            "interpretation": "N/A",
+            "meets_target_85": False,
+        }
+
+    kappa = fleiss_kappa(valid, annotator_cols)
+    p_agree = pairwise_percent_agreement(valid, annotator_cols)
+
+    return {
+        "n_comments": int(n_comments),
+        "fleiss_kappa": round(kappa, 4),
+        "percent_agreement": round(p_agree, 4),
+        "interpretation": interpret_landis_koch(kappa),
+        "meets_target_85": bool(kappa >= target_kappa),
+    }

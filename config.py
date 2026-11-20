@@ -48,6 +48,7 @@ NETWORK_PROCESSED_DIR = PROCESSED_DIR / "network_analysis"
 COMMUNITY_PROCESSED_DIR = PROCESSED_DIR / "community_detection"
 TOPIC_PROCESSED_DIR = PROCESSED_DIR / "topic_extraction"
 SENTIMENT_PROCESSED_DIR = PROCESSED_DIR / "sentiment_analysis"
+SENTIMENT_LLM_CACHE_DIR = SENTIMENT_PROCESSED_DIR / "llm_cache"
 OUTPUTS_DIR = BASE_DIR / "outputs"
 NETWORK_OUTPUT_DIR = OUTPUTS_DIR / "network_analysis"
 NETWORK_GRAPH_DIR = NETWORK_OUTPUT_DIR / "graph"
@@ -66,6 +67,7 @@ for _d in (
     COMMUNITY_PROCESSED_DIR,
     TOPIC_PROCESSED_DIR,
     SENTIMENT_PROCESSED_DIR,
+    SENTIMENT_LLM_CACHE_DIR,
     NETWORK_GRAPH_DIR,
     NETWORK_FIGURES_DIR,
     COMMUNITY_OUTPUT_DIR,
@@ -135,11 +137,54 @@ TOPIC_TOP_WORDS = 10             # kata kunci per topik / per komunitas
 TOPIC_SEED = 42
 
 # --------------------------------------------------------------------------- #
-# Tahap 8 — Analisis sentimen
+# Tahap 8 — Analisis sentimen (3 LLM Anotator + Fleiss' Kappa + Majority Vote)
 # --------------------------------------------------------------------------- #
-SENTIMENT_SAMPLE_SIZE = 400      # jumlah komentar untuk dilabeli manual (validasi)
+SENTIMENT_SAMPLE_SIZE = 150      # jumlah komentar untuk pilot test Fleiss' Kappa
 SENTIMENT_SEED = 42
 SENTIMENT_LABELS = ["positif", "netral", "negatif"]
+SENTIMENT_FLEISS_TARGET = 0.85   # syarat minimal Fleiss' Kappa (Landis & Koch: Almost Perfect >= 0.81)
+SENTIMENT_TIE_BREAKER = "netral" # label fallback bila 3 anotator memilih 1-1-1 berbeda semua
+
+# Konfigurasi 3 LLM Anotator (API key & endpoint dibaca dari .env)
+# Pengaturan batch_size & request_delay disesuaikan per model sedikit di bawah batas aman API
+LLM_ANNOTATORS = [
+    {
+        "id": 1,
+        "name": os.getenv("ANNOTATOR_1_NAME", "gemini_3_5_flash").strip(),
+        "provider": os.getenv("ANNOTATOR_1_PROVIDER", "gemini").strip(),
+        "model": os.getenv("ANNOTATOR_1_MODEL", "gemini-3.5-flash").strip(),
+        "base_url": os.getenv("ANNOTATOR_1_BASE_URL", "https://generativelanguage.googleapis.com/v1beta").strip(),
+        "api_key": (os.getenv("ANNOTATOR_1_API_KEY") or os.getenv("GEMINI_API_KEY") or "").strip(),
+        "batch_size": 70,        # 6.601 / 70 = ~95 request (hemat RPD harian Gemini)
+        "request_delay": 4.0,    # jeda antar batch (detik)
+        "max_text_chars": 500,
+        "tpm_budget": 0,
+    },
+    {
+        "id": 2,
+        "name": os.getenv("ANNOTATOR_2_NAME", "llama_3_3_70b").strip(),
+        "provider": os.getenv("ANNOTATOR_2_PROVIDER", "openai_compatible").strip(),
+        "model": os.getenv("ANNOTATOR_2_MODEL", "@cf/meta/llama-3.3-70b-instruct-fp8-fast").strip(),
+        "base_url": os.getenv("ANNOTATOR_2_BASE_URL", "").strip(),
+        "api_key": os.getenv("ANNOTATOR_2_API_KEY", "").strip(),
+        "batch_size": 55,        # 6.601 / 55 = ~121 request (aman untuk JSON output Cloudflare)
+        "request_delay": 3.5,    # jeda antar batch (detik)
+        "max_text_chars": 450,
+        "tpm_budget": 0,
+    },
+    {
+        "id": 3,
+        "name": os.getenv("ANNOTATOR_3_NAME", "qwen_3_8_27b").strip(),
+        "provider": os.getenv("ANNOTATOR_3_PROVIDER", "openai_compatible").strip(),
+        "model": os.getenv("ANNOTATOR_3_MODEL", "qwen/qwen3.8-27b").strip(),
+        "base_url": os.getenv("ANNOTATOR_3_BASE_URL", "https://api.groq.com/openai/v1").strip(),
+        "api_key": (os.getenv("ANNOTATOR_3_API_KEY") or os.getenv("GROQ_API_KEY") or "").strip(),
+        "batch_size": 20,        # aman di bawah limit TPM free tier Groq
+        "request_delay": 6.0,    # jeda minimal antar batch (detik) + dynamic TPM pacing
+        "max_text_chars": 400,
+        "tpm_budget": 10000,
+    },
+]
 
 # --------------------------------------------------------------------------- #
 # Tahap 9 — Perbandingan antar komunitas
